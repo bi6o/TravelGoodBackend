@@ -1,0 +1,82 @@
+Main\BackendBundle\Entity\FosUser:
+    type: entity
+    table: fos_user
+    uniqueConstraints:
+        uniq_957a6479a0d96fbf:
+            columns:
+                - email_canonical
+        uniq_957a6479c05fb297:
+            columns:
+                - confirmation_token
+        uniq_957a647992fc23a8:
+            columns:
+                - username_canonical
+    id:
+        id:
+            id: true
+            type: integer
+            generator:
+                strategy: SEQUENCE
+    fields:
+        username:
+            type: string
+            length: 180
+            nullable: false
+            options:
+                fixed: ''
+        usernameCanonical:
+            type: string
+            length: 180
+            nullable: false
+            options:
+                fixed: ''
+            column: username_canonical
+        email:
+            type: string
+            length: 180
+            nullable: false
+            options:
+                fixed: ''
+        emailCanonical:
+            type: string
+            length: 180
+            nullable: false
+            options:
+                fixed: ''
+            column: email_canonical
+        enabled:
+            type: boolean
+            nullable: false
+        salt:
+            type: string
+            length: 255
+            nullable: true
+            options:
+                fixed: ''
+        password:
+            type: string
+            length: 255
+            nullable: false
+            options:
+                fixed: ''
+        lastLogin:
+            type: datetime
+            nullable: true
+            column: last_login
+        confirmationToken:
+            type: string
+            length: 180
+            nullable: true
+            options:
+                fixed: ''
+            column: confirmation_token
+        passwordRequestedAt:
+            type: datetime
+            nullable: true
+            column: password_requested_at
+        roles:
+            type: array
+            nullable: false
+            options:
+                fixed: ''
+    lifecycleCallbacks: {  }

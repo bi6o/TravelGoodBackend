@@ -1,0 +1,54 @@
+Main\BackendBundle\Entity\Customer:
+    type: entity
+    table: customer
+    uniqueConstraints:
+        uniq_81398e09f85e0677:
+            columns:
+                - username
+        uniq_81398e09e7927c74:
+            columns:
+                - email
+    id:
+        id:
+            id: true
+            type: integer
+            generator:
+                strategy: SEQUENCE
+    fields:
+        username:
+            type: string
+            length: 255
+            nullable: false
+            options:
+                fixed: ''
+        password:
+            type: string
+            length: 255
+            nullable: false
+            options:
+                fixed: ''
+        email:
+            type: string
+            length: 255
+            nullable: false
+            options:
+                fixed: ''
+        firstName:
+            type: string
+            length: 20
+            nullable: true
+            options:
+                fixed: ''
+            column: first_name
+        lastName:
+            type: string
+            length: 20
+            nullable: true
+            options:
+                fixed: ''
+            column: last_name
+        lastLogin:
+            type: datetime
+            nullable: true
+            column: last_login
+    lifecycleCallbacks: {  }

@@ -1,0 +1,41 @@
+#login-form{
+    text-align: center;
+}
+ul {
+  list-style-type: none;
+  text-align: center;
+}
+#nav *{
+    margin: 8px;
+    font-size: 18px;
+}
+#title{
+    font-size: 44px;
+    color: #3e57b9;
+}
+#body{
+    padding-top:35px;
+}
+table{
+    margin-top: 35px;
+}
+#main_backendbundle_customer,
+#main_backendbundle_fosuser,
+input[type="submit"],
+body h1{
+    margin-left:3%;
+}
+
+ input[type="submit"]{
+     margin-top:35px;
+ }
+
+#main_backendbundle_customer label,
+#main_backendbundle_customer input,
+#main_backendbundle_fosuser label,
+#main_backendbundle_fosuser input{
+
+    width: 200px;
+    margin-top:5px;
+    margin-bottom: 5px;
+}

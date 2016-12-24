@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Customer</h1>
+
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Username</th>
+                <td>{{ customer.username }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ customer.email }}</td>
+            </tr>
+            <tr>
+                <th>First name</th>
+                <td>{{ customer.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Last name</th>
+                <td>{{ customer.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Last login</th>
+                <td>
+                    {% if customer.lastLogin %}{{ customer.lastLogin|date('Y-m-d H:i:s') }}{% endif %}
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_customers_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_customers_edit', { 'id': customer.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

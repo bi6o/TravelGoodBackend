@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Customercity</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ customerCity.id }}</td>
+            </tr>
+            <tr>
+                <th>Customer</th>
+                <td>{{ customerCity.customer.username }}</td>
+            </tr>
+            <tr>
+                <th>Cityname</th>
+                <td>{{ customerCity.cityName }}</td>
+            </tr>
+            <tr>
+                <th>Datearrived</th>
+                <td>
+                    {% if customerCity.dateArrived %}{{ customerCity.dateArrived|date('Y-m-d H:i:s') }}{% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Datedeparted</th>
+                <td>
+                    {% if customerCity.dateDeparted %}{{ customerCity.dateDeparted|date('Y-m-d H:i:s') }}{% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Logitude</th>
+                <td>{{ customerCity.logitude }}</td>
+            </tr>
+            <tr>
+                <th>Latitude</th>
+                <td>{{ customerCity.latitude }}</td>
+            </tr>
+            <tr>
+                <th>Citybreif</th>
+                <td>{{ customerCity.cityBreif }}</td>
+            </tr>
+            <tr>
+                <th>Currentcity</th>
+                <td>
+                    {% if customerCity.currentCity %}Yes{% else %}No{% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Visitedcity</th>
+                <td>
+                    {% if customerCity.visitedCity %}Yes{% else %}No{% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Livedcity</th>
+                <td>
+                    {% if customerCity.livedCity %}Yes{% else %}No{% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_customer_city_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_customer_city_edit', { 'id': customerCity.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
