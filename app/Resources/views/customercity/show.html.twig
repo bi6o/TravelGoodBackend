@@ -59,6 +59,12 @@
                     {% if customerCity.livedCity %}Yes{% else %}No{% endif %}
                 </td>
             </tr>
+            <tr>
+                <th>Customer owner</th>
+                <td>
+                    {% if customerCity.customer %}{{customerCity.customer.username}}{% endif %}
+                </td>
+            </tr>
         </tbody>
     </table>
 
