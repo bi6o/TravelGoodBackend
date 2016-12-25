@@ -19,9 +19,14 @@
             </tr>
             <tr>
                 <th>Customer Cities</th>
-                {% for city in customer.customerCities%}
-                    <td>{{ city.cityName }}</td>
-                {% endfor %}
+                <td>
+                    {% for city in customer.customerCities%}
+                        {{ city.cityName }}
+                        {% if not loop.last %}
+                            ,
+                        {% endif %}
+                    {% endfor %}
+                </td>
             </tr>
             <tr>
                 <th>Last name</th>
