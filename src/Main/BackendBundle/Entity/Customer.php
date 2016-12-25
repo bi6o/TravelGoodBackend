@@ -238,7 +238,7 @@ class Customer
      */
     public function addCustomerCity(\Main\BackendBundle\Entity\CustomerCity $customerCity)
     {
-        $this->customerCities[] = $customerCity;
+        $this->customerCities->add($customerCity);
 
         return $this;
     }
