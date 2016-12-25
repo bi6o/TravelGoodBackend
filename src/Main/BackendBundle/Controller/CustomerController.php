@@ -5,16 +5,16 @@ namespace Main\BackendBundle\Controller;
 use Main\BackendBundle\Entity\Customer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Collections\ArrayCollection;
+use Main\BackendBundle\Entity\CustomerCity;
 
 /**
  * Customer controller.
- *
  */
 class CustomerController extends Controller
 {
     /**
      * Lists all customer entities.
-     *
      */
     public function indexAction()
     {
@@ -29,11 +29,11 @@ class CustomerController extends Controller
 
     /**
      * Creates a new customer entity.
-     *
      */
     public function newAction(Request $request)
     {
         $customer = new Customer();
+
         $form = $this->createForm('Main\BackendBundle\Form\CustomerType', $customer);
         $form->handleRequest($request);
 
@@ -42,7 +42,7 @@ class CustomerController extends Controller
             $em->persist($customer);
             $em->flush($customer);
 
-            return $this->redirectToRoute('admin_customers_show', array('id' => $customer->getId()));
+            return $this->redirectToRoute('admin_customer_show', array('id' => $customer->getId()));
         }
 
         return $this->render('customer/new.html.twig', array(
@@ -53,11 +53,14 @@ class CustomerController extends Controller
 
     /**
      * Finds and displays a customer entity.
-     *
      */
     public function showAction(Customer $customer)
     {
         $deleteForm = $this->createDeleteForm($customer);
+
+        $cutomerCities = $this->findCities($customer);
+
+        $customer->setCustomerCities($cutomerCities);
 
         return $this->render('customer/show.html.twig', array(
             'customer' => $customer,
@@ -65,9 +68,19 @@ class CustomerController extends Controller
         ));
     }
 
+    private function findCities(Customer $customer)
+    {
+        $customerCities = new ArrayCollection();
+
+        foreach ($customer->getCustomerCities() as $customerCity) {
+            $customerCities->first($this->getDoctrine()->getRepository('MainBackendBundle:CustomerCity')->find($customerCity));
+        }
+
+        return $customerCities;
+    }
+
     /**
      * Displays a form to edit an existing customer entity.
-     *
      */
     public function editAction(Request $request, Customer $customer)
     {
@@ -78,7 +91,7 @@ class CustomerController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin_customers_edit', array('id' => $customer->getId()));
+            return $this->redirectToRoute('admin_customer_edit', array('id' => $customer->getId()));
         }
 
         return $this->render('customer/edit.html.twig', array(
@@ -90,7 +103,6 @@ class CustomerController extends Controller
 
     /**
      * Deletes a customer entity.
-     *
      */
     public function deleteAction(Request $request, Customer $customer)
     {
@@ -103,7 +115,7 @@ class CustomerController extends Controller
             $em->flush($customer);
         }
 
-        return $this->redirectToRoute('admin_customers_index');
+        return $this->redirectToRoute('admin_customer_index');
     }
 
     /**
@@ -116,7 +128,7 @@ class CustomerController extends Controller
     private function createDeleteForm(Customer $customer)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_customers_delete', array('id' => $customer->getId())))
+            ->setAction($this->generateUrl('admin_customer_delete', array('id' => $customer->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

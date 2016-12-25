@@ -1,17 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>System users</h1>
+    <h1>Fosusers list</h1>
 
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th>Id</th>
                 <th>Username</th>
+
                 <th>Email</th>
+
                 <th>Enabled</th>
+
                 <th>Last login</th>
+
                 <th>Password requested at</th>
-                <th>Role</th>
+                <th>Roles</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -19,29 +24,33 @@
             {% for fosUser in fosUsers %}
                 <tr>
                     <td>
-                        <a href="{{ path('admin_users_show', { 'id': fosUser.id }) }}">{{ fosUser.username }}</a>
+                        <a href="{{ path('admin_user_show', { 'id': fosUser.id }) }}">{{ fosUser.id }}</a>
                     </td>
+                    <td>{{ fosUser.username }}</td>
+
                     <td>{{ fosUser.email }}</td>
+
                     <td>
                         {% if fosUser.enabled %}Yes{% else %}No{% endif %}
                     </td>
+
                     <td>
                         {% if fosUser.lastLogin %}{{ fosUser.lastLogin|date('Y-m-d H:i:s') }}{% endif %}
                     </td>
+
                     <td>
                         {% if fosUser.passwordRequestedAt %}{{ fosUser.passwordRequestedAt|date('Y-m-d H:i:s') }}{% endif %}
                     </td>
                     <td>
                         {% if fosUser.roles %}{{ fosUser.roles|join(', ') }}{% endif %}
                     </td>
-
                     <td>
                         <ul>
                             <li>
-                                <a href="{{ path('admin_users_show', { 'id': fosUser.id }) }}">show</a>
+                                <a href="{{ path('admin_user_show', { 'id': fosUser.id }) }}">show</a>
                             </li>
                             <li>
-                                <a href="{{ path('admin_users_edit', { 'id': fosUser.id }) }}">edit</a>
+                                <a href="{{ path('admin_user_edit', { 'id': fosUser.id }) }}">edit</a>
                             </li>
                         </ul>
                     </td>
@@ -52,7 +61,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('admin_users_new') }}">Create a new system user</a>
+            <a href="{{ path('admin_user_new') }}">Create a new fosUser</a>
         </li>
     </ul>
 {% endblock %}

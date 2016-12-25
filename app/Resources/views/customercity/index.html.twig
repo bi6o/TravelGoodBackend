@@ -3,7 +3,7 @@
 {% block body %}
     <h1>Cities added</h1>
 
-    <table class="table">
+    <table class="table-bordered table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -27,9 +27,11 @@
                         <a href="{{ path('admin_customer_city_show', { 'id': customerCity.id }) }}">{{ customerCity.id }}</a>
                     </td>
                     <td>
-                        <a href="{{path('admin_customers_show' , {'id': customerCity.customer.id})}}">
-                            {{customerCity.customer.username}}
-                        </a>
+                        {% if customerCity.customer is not null %}
+                            <a href="{{path('admin_customer_show' , {'id': customerCity.customer.id})}}">
+                                {{customerCity.customer.username}}
+                            </a>
+                        {% endif %}
                         <td>{{ customerCity.cityName }}</td>
                         <td>
                             {% if customerCity.dateArrived %}{{ customerCity.dateArrived|date('Y-m-d H:i:s') }}{% endif %}

@@ -1,15 +1,15 @@
 main_backend_admin_customers:
     resource: "@MainBackendBundle/Resources/config/routing/customer.yml"
-    prefix:   /admin/customers
+    prefix:   /admin/customer
 
-main_backend_admin_users:
-    resource: "@MainBackendBundle/Resources/config/routing/fosuser.yml"
-    prefix:   /admin/users
+main_backend_user:
+        resource: "@MainBackendBundle/Resources/config/routing/fosuser.yml"
+        prefix:   /admin/user
 
 main_backend_homepage:
     path:     /admin/
     defaults: { _controller: MainBackendBundle:Default:index }
-    
+
 main_backend_admin_customer_city:
         resource: "@MainBackendBundle/Resources/config/routing/customercity.yml"
         prefix:   /admin/customer_city

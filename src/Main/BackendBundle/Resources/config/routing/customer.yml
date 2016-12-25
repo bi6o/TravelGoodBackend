@@ -1,24 +1,24 @@
-admin_customers_index:
+admin_customer_index:
     path:     /
     defaults: { _controller: "MainBackendBundle:Customer:index" }
     methods:  GET
 
-admin_customers_show:
+admin_customer_show:
     path:     /{id}/show
     defaults: { _controller: "MainBackendBundle:Customer:show" }
     methods:  GET
 
-admin_customers_new:
+admin_customer_new:
     path:     /new
     defaults: { _controller: "MainBackendBundle:Customer:new" }
     methods:  [GET, POST]
 
-admin_customers_edit:
+admin_customer_edit:
     path:     /{id}/edit
     defaults: { _controller: "MainBackendBundle:Customer:edit" }
     methods:  [GET, POST]
 
-admin_customers_delete:
+admin_customer_delete:
     path:     /{id}/delete
     defaults: { _controller: "MainBackendBundle:Customer:delete" }
     methods:  DELETE

@@ -42,7 +42,7 @@ class FosUserController extends Controller
             $em->persist($fosUser);
             $em->flush($fosUser);
 
-            return $this->redirectToRoute('admin_users_show', array('id' => $fosUser->getId()));
+            return $this->redirectToRoute('user_show', array('id' => $fosUser->getId()));
         }
 
         return $this->render('fosuser/new.html.twig', array(
@@ -78,7 +78,7 @@ class FosUserController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin_users_edit', array('id' => $fosUser->getId()));
+            return $this->redirectToRoute('user_edit', array('id' => $fosUser->getId()));
         }
 
         return $this->render('fosuser/edit.html.twig', array(
@@ -103,7 +103,7 @@ class FosUserController extends Controller
             $em->flush($fosUser);
         }
 
-        return $this->redirectToRoute('admin_users_index');
+        return $this->redirectToRoute('user_index');
     }
 
     /**
@@ -116,7 +116,7 @@ class FosUserController extends Controller
     private function createDeleteForm(FosUser $fosUser)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_users_delete', array('id' => $fosUser->getId())))
+            ->setAction($this->generateUrl('user_delete', array('id' => $fosUser->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

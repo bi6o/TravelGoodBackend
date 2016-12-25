@@ -260,6 +260,22 @@ class Customer
      */
     public function getCustomerCities()
     {
-        return $this->customerCities;
+        return $this->customerCities->ToArray();
+    }
+
+    /**
+     * Set customerCities.
+     *
+     * @param \ArrayCollection $customerCities
+     *
+     * @return Customer
+     */
+    public function setCustomerCities(ArrayCollection $customerCities)
+    {
+        foreach ($customerCities as $customerCity) {
+            $this->customerCities[] = $customerCity;
+        }
+
+        return $this;
     }
 }

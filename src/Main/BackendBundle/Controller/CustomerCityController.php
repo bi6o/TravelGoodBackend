@@ -20,9 +20,12 @@ class CustomerCityController extends Controller
 
         $customerCities = $em->getRepository('MainBackendBundle:CustomerCity')->findAll();
 
-        $customers = [];
         foreach ($customerCities as $customerCity) {
-            $customerCity->setCustomer = $this->findCustomerOfCity($customerCity);
+            $customer = $this->findCustomerOfCity($customerCity);
+
+            if ($customer != null) {
+                $customerCity->setCustomer($customer);
+            }
         }
 
         return $this->render('customercity/index.html.twig', array(
@@ -70,7 +73,11 @@ class CustomerCityController extends Controller
 
     private function findCustomerOfCity(CustomerCity $customerCity)
     {
-        return $customer = $this->getDoctrine()->getRepository('MainBackendBundle:Customer')->find($customerCity->getCustomer());
+        if ($customerCity->getCustomer() !== null) {
+            return $customer = $this->getDoctrine()->getRepository('MainBackendBundle:Customer')->find($customerCity->getCustomer()->getId());
+        }
+
+        return null;
     }
 
     /**

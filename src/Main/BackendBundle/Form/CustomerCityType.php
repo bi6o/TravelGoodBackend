@@ -13,16 +13,16 @@ class CustomerCityType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('cityName')->add('dateArrived')->add('dateDeparted')->add('logitude')->add('latitude')->add('cityBreif')->add('currentCity')->add('visitedCity')->add('livedCity')->add('customer')        ;
+        $builder->add('cityName')->add('dateArrived')->add('dateDeparted')->add('logitude')->add('latitude')->add('cityBreif')->add('currentCity')->add('visitedCity')->add('livedCity');
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Main\BackendBundle\Entity\CustomerCity'
+            'data_class' => 'Main\BackendBundle\Entity\CustomerCity',
         ));
     }
 
@@ -33,6 +33,4 @@ class CustomerCityType extends AbstractType
     {
         return 'main_backendbundle_customercity';
     }
-
-
 }

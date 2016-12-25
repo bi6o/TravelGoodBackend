@@ -5,7 +5,6 @@ namespace Main\BackendBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class FosUserType extends AbstractType
 {
@@ -14,9 +13,9 @@ class FosUserType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('username')->add('email')->add('enabled')->add('password', PasswordType::class)->add('roles')        ;
+        $builder->add('username')->add('usernameCanonical')->add('email')->add('emailCanonical')->add('enabled')->add('salt')->add('password')->add('lastLogin')->add('confirmationToken')->add('passwordRequestedAt')->add('roles')        ;
     }
-
+    
     /**
      * {@inheritdoc}
      */

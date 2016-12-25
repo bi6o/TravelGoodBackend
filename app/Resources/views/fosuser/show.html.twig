@@ -1,61 +1,71 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>System user</h1>
+    <h1>Fosuser</h1>
 
-    <table class="table">
+    <table>
         <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fosUser.id }}</td>
+            </tr>
             <tr>
                 <th>Username</th>
                 <td>{{ fosUser.username }}</td>
+            </tr>
+            <tr>
+                <th>Usernamecanonical</th>
+                <td>{{ fosUser.usernameCanonical }}</td>
             </tr>
             <tr>
                 <th>Email</th>
                 <td>{{ fosUser.email }}</td>
             </tr>
             <tr>
+                <th>Emailcanonical</th>
+                <td>{{ fosUser.emailCanonical }}</td>
+            </tr>
+            <tr>
                 <th>Enabled</th>
-                <td>
-                    {% if fosUser.enabled %}Yes{% else %}No{% endif %}
-                </td>
-            </tr>
-
-            <tr>
-                <th>Last login</th>
-                <td>
-                    {% if fosUser.lastLogin %}{{ fosUser.lastLogin|date('Y-m-d H:i:s') }}{% endif %}
-                </td>
+                <td>{% if fosUser.enabled %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
-                <th>Confirmation token</th>
+                <th>Salt</th>
+                <td>{{ fosUser.salt }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ fosUser.password }}</td>
+            </tr>
+            <tr>
+                <th>Lastlogin</th>
+                <td>{% if fosUser.lastLogin %}{{ fosUser.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Confirmationtoken</th>
                 <td>{{ fosUser.confirmationToken }}</td>
             </tr>
             <tr>
-                <th>Password requested at</th>
-                <td>
-                    {% if fosUser.passwordRequestedAt %}{{ fosUser.passwordRequestedAt|date('Y-m-d H:i:s') }}{% endif %}
-                </td>
+                <th>Passwordrequestedat</th>
+                <td>{% if fosUser.passwordRequestedAt %}{{ fosUser.passwordRequestedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Role</th>
-                <td>
-                    {% if fosUser.roles %}{{ fosUser.roles|join(', ') }}{% endif %}
-                </td>
+                <th>Roles</th>
+                <td>{% if fosUser.roles %}{{ fosUser.roles|join(', ') }}{% endif %}</td>
             </tr>
-
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('admin_users_index') }}">Back to the list</a>
+            <a href="{{ path('user_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('admin_users_edit', { 'id': fosUser.id }) }}">Edit</a>
+            <a href="{{ path('user_edit', { 'id': fosUser.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-            <input type="submit" value="Delete">
+                <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
     </ul>

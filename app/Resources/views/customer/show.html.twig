@@ -18,6 +18,12 @@
                 <td>{{ customer.firstName }}</td>
             </tr>
             <tr>
+                <th>Customer Cities</th>
+                {% for city in customer.customerCities%}
+                    <td>{{ city.cityName }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
                 <th>Last name</th>
                 <td>{{ customer.lastName }}</td>
             </tr>
@@ -33,10 +39,10 @@
 
     <ul>
         <li>
-            <a href="{{ path('admin_customers_index') }}">Back to the list</a>
+            <a href="{{ path('admin_customer_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('admin_customers_edit', { 'id': customer.id }) }}">Edit</a>
+            <a href="{{ path('admin_customer_edit', { 'id': customer.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
