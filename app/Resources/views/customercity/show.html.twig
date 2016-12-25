@@ -9,10 +9,7 @@
                 <th>Id</th>
                 <td>{{ customerCity.id }}</td>
             </tr>
-            <tr>
-                <th>Customer</th>
-                <td>{{ customerCity.customer.username }}</td>
-            </tr>
+
             <tr>
                 <th>Cityname</th>
                 <td>{{ customerCity.cityName }}</td>
@@ -60,7 +57,8 @@
                 </td>
             </tr>
             <tr>
-                <th>Customer owner</th>
+                <th>
+                    Owner</th>
                 <td>
                     {% if customerCity.customer %}{{customerCity.customer.username}}{% endif %}
                 </td>
