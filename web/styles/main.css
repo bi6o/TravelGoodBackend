@@ -24,8 +24,7 @@ table tr{
 }
 #main_backendbundle_customer,
 #main_backendbundle_fosuser,
-input[type="submit"],
-body h1{
+input[type="submit"]{
     margin-left:3%;
 }
 

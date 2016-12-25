@@ -1,21 +1,39 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Customercity edit</h1>
-
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
+    <h1>Edit City</h1>
+    <div class="row">
+        <div class="col-xs-6">
+            {{ form_start(edit_form) }}
+            {{ form_widget(edit_form) }}
+            <input type="submit" value="Edit"/>
+            {{ form_end(edit_form) }}
+        </div>
+        <div class="col-xs-6">
+            <div id="map" style="width:100%;height:500px"></div>
+        </div>
+    </div>
     <ul>
         <li>
             <a href="{{ path('admin_customer_city_index') }}">Back to the list</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
     </ul>
+
+    <script>
+        function cityOnTheMap() {
+            var mapCanvas = document.getElementById("map");
+            var mapOptions = {
+                center: new google.maps.LatLng({{customerCity.getLatitude}}, {{customerCity.getLogitude}}),
+                zoom: 12
+            }
+            var map = new google.maps.Map(mapCanvas, mapOptions);
+        }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?callback=cityOnTheMap&key=AIzaSyDWRksnVtfXTXSdWBnw0BOjh53xvmeg-e0"></script>
 {% endblock %}

@@ -1,70 +1,75 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Customercity</h1>
+    <h1>City</h1>
+    <div class="col-xs-5">
+        <table class="table table-border">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ customerCity.id }}</td>
+                </tr>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ customerCity.id }}</td>
-            </tr>
+                <tr>
+                    <th>City name</th>
+                    <td>{{ customerCity.cityName }}</td>
+                </tr>
+                <tr>
+                    <th>Date arrived</th>
+                    <td>
+                        {% if customerCity.dateArrived %}{{ customerCity.dateArrived|date('Y-m-d H:i:s') }}{% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Date departed</th>
+                    <td>
+                        {% if customerCity.dateDeparted %}{{ customerCity.dateDeparted|date('Y-m-d H:i:s') }}{% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Logitude</th>
+                    <td>{{ customerCity.logitude }}</td>
+                </tr>
+                <tr>
+                    <th>Latitude</th>
+                    <td>{{ customerCity.latitude }}</td>
+                </tr>
+                <tr>
+                    <th>City breif</th>
+                    <td>{{ customerCity.cityBreif }}</td>
+                </tr>
+                <tr>
+                    <th>Current city</th>
+                    <td>
+                        {% if customerCity.currentCity %}Yes{% else %}No{% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Visited city</th>
+                    <td>
+                        {% if customerCity.visitedCity %}Yes{% else %}No{% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Lived city</th>
+                    <td>
+                        {% if customerCity.livedCity %}Yes{% else %}No{% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Owner</th>
+                    <td>
+                        {% if customerCity.customer %}{{customerCity.customer.username}}{% endif %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-            <tr>
-                <th>Cityname</th>
-                <td>{{ customerCity.cityName }}</td>
-            </tr>
-            <tr>
-                <th>Datearrived</th>
-                <td>
-                    {% if customerCity.dateArrived %}{{ customerCity.dateArrived|date('Y-m-d H:i:s') }}{% endif %}
-                </td>
-            </tr>
-            <tr>
-                <th>Datedeparted</th>
-                <td>
-                    {% if customerCity.dateDeparted %}{{ customerCity.dateDeparted|date('Y-m-d H:i:s') }}{% endif %}
-                </td>
-            </tr>
-            <tr>
-                <th>Logitude</th>
-                <td>{{ customerCity.logitude }}</td>
-            </tr>
-            <tr>
-                <th>Latitude</th>
-                <td>{{ customerCity.latitude }}</td>
-            </tr>
-            <tr>
-                <th>Citybreif</th>
-                <td>{{ customerCity.cityBreif }}</td>
-            </tr>
-            <tr>
-                <th>Currentcity</th>
-                <td>
-                    {% if customerCity.currentCity %}Yes{% else %}No{% endif %}
-                </td>
-            </tr>
-            <tr>
-                <th>Visitedcity</th>
-                <td>
-                    {% if customerCity.visitedCity %}Yes{% else %}No{% endif %}
-                </td>
-            </tr>
-            <tr>
-                <th>Livedcity</th>
-                <td>
-                    {% if customerCity.livedCity %}Yes{% else %}No{% endif %}
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Owner</th>
-                <td>
-                    {% if customerCity.customer %}{{customerCity.customer.username}}{% endif %}
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="col-xs-6 col-xs-offset-1">
+        <div id="map" style="width:100%;height:500px"></div>
+    </div>
 
     <ul>
         <li>
@@ -79,4 +84,18 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+
+    <script>
+        function cityOnTheMap() {
+            var mapCanvas = document.getElementById("map");
+            var mapOptions = {
+                center: new google.maps.LatLng({{customerCity.getLatitude}}, {{customerCity.getLogitude}}),
+                zoom: 12
+            }
+            var map = new google.maps.Map(mapCanvas, mapOptions);
+        }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?callback=cityOnTheMap&key=AIzaSyDWRksnVtfXTXSdWBnw0BOjh53xvmeg-e0"></script>
+
 {% endblock %}
