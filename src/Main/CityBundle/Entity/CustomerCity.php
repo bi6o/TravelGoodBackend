@@ -31,6 +31,14 @@ class CustomerCity
     private $customer;
 
     /**
+     * @var int
+     *
+     * @ORM\OneToOne(targetEntity="Main\CityBundle\Entity\AllCities", inversedBy="customerCity")
+     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
+     */
+    private $city;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="city_name", type="string", length=59)

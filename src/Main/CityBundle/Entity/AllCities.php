@@ -64,6 +64,14 @@ class AllCities
     private $province;
 
     /**
+     * @var int
+     *
+     * @ORM\OneToOne(targetEntity="Main\CityBundle\Entity\CustomerCity", inversedBy="city")
+     * @ORM\JoinColumn(name="customer_city_id", referencedColumnName="id")
+     */
+    private $cutsomerCity;
+
+    /**
      * Get id.
      *
      * @return int
