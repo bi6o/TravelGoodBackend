@@ -86,7 +86,7 @@ class CustomerCityController extends Controller
     public function editAction(Request $request, CustomerCity $customerCity)
     {
         $deleteForm = $this->createDeleteForm($customerCity);
-        $editForm = $this->createForm('Main\BackendBundle\Form\CustomerCityType', $customerCity);
+        $editForm = $this->createForm('Main\CityBundle\Form\CustomerCityType', $customerCity);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
