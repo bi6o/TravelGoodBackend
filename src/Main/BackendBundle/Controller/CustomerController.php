@@ -58,9 +58,10 @@ class CustomerController extends Controller
     {
         $deleteForm = $this->createDeleteForm($customer);
 
-        $cutomerCities = $this->findCities($customer);
+        $customerCities = $this->findCities($customer);
 
-        $customer->setCustomerCities($cutomerCities);
+        $customer->intiCustomerCities();
+        $customer->setCustomerCities($customerCities);
 
         return $this->render('customer/show.html.twig', array(
             'customer' => $customer,
@@ -71,9 +72,13 @@ class CustomerController extends Controller
     private function findCities(Customer $customer)
     {
         $customerCities = new ArrayCollection();
+        $cities =
+        $this->getDoctrine()->getRepository('MainCityBundle:CustomerCity')->findAll();
 
-        foreach ($customer->getCustomerCities() as $customerCity) {
-            $customerCities->first($this->getDoctrine()->getRepository('MainCityBundle:CustomerCity')->find($customerCity));
+        foreach ($cities as $city) {
+            if ($city->getCustomer() === $customer) {
+                $customerCities->add($city);
+            }
         }
 
         return $customerCities;

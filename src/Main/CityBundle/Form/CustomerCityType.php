@@ -15,7 +15,10 @@ class CustomerCityType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('cityName')
+        $builder->add('city', EntityType::class, [
+            'class' => 'Main\CityBundle\Entity\AllCities',
+            'choice_label' => 'city',
+        ])
                 ->add('dateArrived', DateTimeType::class
                 //@todo: add bootstrap's DatePicker using the comments and adding the needed js file
                 // , [

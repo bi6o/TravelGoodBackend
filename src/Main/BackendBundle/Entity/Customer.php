@@ -4,6 +4,7 @@ namespace Main\BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Main\CityBundle\Entity\CustomerCity;
 
 /**
  * Customer.
@@ -56,7 +57,7 @@ class Customer
     private $lastLogin;
 
     /**
-     * @ORM\OneToMany(targetEntity="CustomerCity", mappedBy="customer")
+     * @ORM\OneToMany(targetEntity="Main\CityBundle\Entity\CustomerCity", mappedBy="customer")
      */
     private $customerCities;
 
@@ -236,7 +237,7 @@ class Customer
      *
      * @return Customer
      */
-    public function addCustomerCity(\Main\CityBundle\Entity\CustomerCity $customerCity)
+    public function addCustomerCity(CustomerCity $customerCity)
     {
         $this->customerCities->add($customerCity);
 
@@ -248,7 +249,7 @@ class Customer
      *
      * @param \Main\CityBundle\Entity\CustomerCity $customerCity
      */
-    public function removeCustomerCity(\Main\CityBundle\Entity\CustomerCity $customerCity)
+    public function removeCustomerCity(CustomerCity $customerCity)
     {
         $this->customerCities->removeElement($customerCity);
     }
@@ -260,7 +261,7 @@ class Customer
      */
     public function getCustomerCities()
     {
-        return $this->customerCities->ToArray();
+        return $this->customerCities->toArray();
     }
 
     /**
@@ -273,8 +274,14 @@ class Customer
     public function setCustomerCities(ArrayCollection $customerCities)
     {
         foreach ($customerCities as $customerCity) {
-            $this->customerCities[] = $customerCity;
+            $this->customerCities->add($customerCity);
         }
+
+        return $this;
+    }
+    public function intiCustomerCities()
+    {
+        $this->customerCities = new ArrayCollection();
 
         return $this;
     }

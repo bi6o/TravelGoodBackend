@@ -20,8 +20,10 @@
             <tr>
                 <th>Customer Cities</th>
                 <td>
-                    {% for city in customer.customerCities%}
-                        {{ city.cityName }}
+                    {% for customerCity in customer.customerCities%}
+                        <a href="{{ path('admin_customer_city_show' , {'id' : customerCity.id}) }}">
+                            {{ customerCity.city.city }}
+                        </a>
                         {% if not loop.last %}
                             ,
                         {% endif %}
@@ -29,8 +31,10 @@
                 </td>
             </tr>
             <tr>
-                <th>Last name</th>
-                <td>{{ customer.lastName }}</td>
+                <th>
+                    name</th>
+                <td>Last
+                    {{ customer.lastName }}</td>
             </tr>
             <tr>
                 <th>Last login</th>

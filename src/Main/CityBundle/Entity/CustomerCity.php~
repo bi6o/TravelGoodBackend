@@ -105,6 +105,30 @@ class CustomerCity
     }
 
     /**
+     * Set cityName.
+     *
+     * @param string $cityName
+     *
+     * @return CustomerCity
+     */
+    public function setCityName($cityName)
+    {
+        $this->cityName = $cityName;
+
+        return $this;
+    }
+
+    /**
+     * Get cityName.
+     *
+     * @return string
+     */
+    public function getCityName()
+    {
+        return $this->cityName;
+    }
+
+    /**
      * Set dateArrived.
      *
      * @param \DateTime $dateArrived
@@ -318,29 +342,5 @@ class CustomerCity
     public function getCustomer()
     {
         return $this->customer;
-    }
-
-    /**
-     * Set city.
-     *
-     * @param \Main\CityBundle\Entity\AllCities $city
-     *
-     * @return CustomerCity
-     */
-    public function setCity(\Main\CityBundle\Entity\AllCities $city = null)
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get city.
-     *
-     * @return \Main\CityBundle\Entity\AllCities
-     */
-    public function getCity()
-    {
-        return $this->city;
     }
 }

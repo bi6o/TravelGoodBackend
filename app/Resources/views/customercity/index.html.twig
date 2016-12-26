@@ -31,7 +31,9 @@
                                 {{customerCity.customer.username}}
                             </a>
                         {% endif %}
-                        <td>{{ customerCity.cityName }}</td>
+                        <td>
+                            {% if customerCity.city %}{{ customerCity.city.city }}{% endif %}
+                        </td>
                         <td>
                             {% if customerCity.dateArrived %}{{ customerCity.dateArrived|date('Y-m-d H:i:s') }}{% endif %}
                         </td>
