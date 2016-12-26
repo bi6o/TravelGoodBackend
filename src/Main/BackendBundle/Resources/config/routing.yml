@@ -10,9 +10,6 @@ main_backend_homepage:
     path:     /admin/
     defaults: { _controller: MainBackendBundle:Default:index }
 
-main_backend_admin_customer_city:
-        resource: "@MainBackendBundle/Resources/config/routing/customercity.yml"
-        prefix:   /admin/customer_city
 
 login:
     path:   /login

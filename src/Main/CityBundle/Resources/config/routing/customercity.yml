@@ -1,24 +1,24 @@
 admin_customer_city_index:
     path:     /
-    defaults: { _controller: "MainBackendBundle:CustomerCity:index" }
+    defaults: { _controller: "MainCityBundle:CustomerCity:index" }
     methods:  GET
 
 admin_customer_city_show:
     path:     /{id}/show
-    defaults: { _controller: "MainBackendBundle:CustomerCity:show" }
+    defaults: { _controller: "MainCityBundle:CustomerCity:show" }
     methods:  GET
 
 admin_customer_city_new:
     path:     /new
-    defaults: { _controller: "MainBackendBundle:CustomerCity:new" }
+    defaults: { _controller: "MainCityBundle:CustomerCity:new" }
     methods:  [GET, POST]
 
 admin_customer_city_edit:
     path:     /{id}/edit
-    defaults: { _controller: "MainBackendBundle:CustomerCity:edit" }
+    defaults: { _controller: "MainCityBundle:CustomerCity:edit" }
     methods:  [GET, POST]
 
 admin_customer_city_delete:
     path:     /{id}/delete
-    defaults: { _controller: "MainBackendBundle:CustomerCity:delete" }
+    defaults: { _controller: "MainCityBundle:CustomerCity:delete" }
     methods:  DELETE

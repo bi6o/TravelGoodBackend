@@ -1,6 +1,6 @@
 <?php
 
-namespace Main\BackendBundle\Form;
+namespace Main\CityBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -30,7 +30,7 @@ class CustomerCityType extends AbstractType
                 ->add('dateDeparted')
                 ->add('logitude')
                 ->add('latitude')
-                ->add('cityBreif')
+                ->add('cityBrief')
                 ->add('currentCity')
                 ->add('visitedCity')
                 ->add('livedCity')
@@ -46,7 +46,7 @@ class CustomerCityType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Main\BackendBundle\Entity\CustomerCity',
+            'data_class' => 'Main\CityBundle\Entity\CustomerCity',
         ));
     }
 
@@ -55,6 +55,6 @@ class CustomerCityType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'main_backendbundle_customercity';
+        return 'main_backend_admin_customer_city';
     }
 }

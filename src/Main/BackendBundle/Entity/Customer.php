@@ -232,11 +232,11 @@ class Customer
     /**
      * Add customerCity.
      *
-     * @param \Main\BackendBundle\Entity\CustomerCity $customerCity
+     * @param \Main\CityBundle\Entity\CustomerCity $customerCity
      *
      * @return Customer
      */
-    public function addCustomerCity(\Main\BackendBundle\Entity\CustomerCity $customerCity)
+    public function addCustomerCity(\Main\CityBundle\Entity\CustomerCity $customerCity)
     {
         $this->customerCities->add($customerCity);
 
@@ -246,9 +246,9 @@ class Customer
     /**
      * Remove customerCity.
      *
-     * @param \Main\BackendBundle\Entity\CustomerCity $customerCity
+     * @param \Main\CityBundle\Entity\CustomerCity $customerCity
      */
-    public function removeCustomerCity(\Main\BackendBundle\Entity\CustomerCity $customerCity)
+    public function removeCustomerCity(\Main\CityBundle\Entity\CustomerCity $customerCity)
     {
         $this->customerCities->removeElement($customerCity);
     }

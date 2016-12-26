@@ -1,0 +1,7 @@
+main_city_homepage:
+    path:     /admin/all_cities
+    defaults: { _controller: MainCityBundle:Default:index }
+
+main_backend_admin_customer_city:
+        resource: "@MainCityBundle/Resources/config/routing/customercity.yml"
+        prefix:   /admin/customer_city

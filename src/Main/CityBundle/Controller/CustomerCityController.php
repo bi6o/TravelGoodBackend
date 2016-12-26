@@ -1,13 +1,13 @@
 <?php
 
-namespace Main\BackendBundle\Controller;
+namespace Main\CityBundle\Controller;
 
-use Main\BackendBundle\Entity\CustomerCity;
+use Main\CityBundle\Entity\CustomerCity;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Customercity controller.
+ * CustomerCity controller.
  */
 class CustomerCityController extends Controller
 {
@@ -18,7 +18,7 @@ class CustomerCityController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $customerCities = $em->getRepository('MainBackendBundle:CustomerCity')->findAll();
+        $customerCities = $em->getRepository('MainCityBundle:CustomerCity')->findAll();
 
         foreach ($customerCities as $customerCity) {
             $customer = $this->findCustomerOfCity($customerCity);
@@ -39,7 +39,7 @@ class CustomerCityController extends Controller
     public function newAction(Request $request)
     {
         $customerCity = new Customercity();
-        $form = $this->createForm('Main\BackendBundle\Form\CustomerCityType', $customerCity);
+        $form = $this->createForm('Main\CityBundle\Form\CustomerCityType', $customerCity);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

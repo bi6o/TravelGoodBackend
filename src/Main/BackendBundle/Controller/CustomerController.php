@@ -6,7 +6,7 @@ use Main\BackendBundle\Entity\Customer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Collections\ArrayCollection;
-use Main\BackendBundle\Entity\CustomerCity;
+use Main\CityBundle\Entity\CustomerCity;
 
 /**
  * Customer controller.
@@ -73,7 +73,7 @@ class CustomerController extends Controller
         $customerCities = new ArrayCollection();
 
         foreach ($customer->getCustomerCities() as $customerCity) {
-            $customerCities->first($this->getDoctrine()->getRepository('MainBackendBundle:CustomerCity')->find($customerCity));
+            $customerCities->first($this->getDoctrine()->getRepository('MainCityBundle:CustomerCity')->find($customerCity));
         }
 
         return $customerCities;
