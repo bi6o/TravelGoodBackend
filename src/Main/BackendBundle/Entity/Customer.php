@@ -5,6 +5,7 @@ namespace Main\BackendBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Main\CityBundle\Entity\CustomerCity;
+use Main\PhotoBundle\Entity\Photo;
 
 /**
  * Customer.
@@ -260,6 +261,13 @@ class Customer
         $this->customerCities->removeElement($customerCity);
     }
 
+    public function intiCustomerCities()
+    {
+        $this->customerCities = new ArrayCollection();
+
+        return $this;
+    }
+
     /**
      * Get customerCities.
      *
@@ -268,6 +276,30 @@ class Customer
     public function getCustomerCities()
     {
         return $this->customerCities->toArray();
+    }
+
+    /**
+     * Add customerPhoto.
+     *
+     * @param \Main\PhotoBundle\Entity\Photo $customerPhoto
+     *
+     * @return Customer
+     */
+    public function addCustomerPhoto(Photo $customerPhoto)
+    {
+        $this->customerPhotos->add($customerPhoto);
+
+        return $this;
+    }
+
+    /**
+     * Remove customerPhoto.
+     *
+     * @param \Main\PhotoBundle\Entity\CustomerPhoto $customerPhoto
+     */
+    public function removeCustomerPhoto(Photo $customerPhoto)
+    {
+        $this->customerPhotos->removeElement($customerPhoto);
     }
 
     /**
@@ -285,9 +317,29 @@ class Customer
 
         return $this;
     }
-    public function intiCustomerCities()
+
+    /**
+     * Get customerPhotos.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCustomerPhotos()
     {
-        $this->customerCities = new ArrayCollection();
+        return $this->customerPhotos->toArray();
+    }
+
+    /**
+     * Set customerPhotos.
+     *
+     * @param \ArrayCollection $customerPhotos
+     *
+     * @return Customer
+     */
+    public function setCustomerPhotos(ArrayCollection $customerPhotos)
+    {
+        foreach ($customerPhotos as $customerPhoto) {
+            $this->customerPhotos->add($customerPhoto);
+        }
 
         return $this;
     }

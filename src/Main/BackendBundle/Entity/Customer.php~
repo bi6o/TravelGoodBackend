@@ -61,9 +61,15 @@ class Customer
      */
     private $customerCities;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Main\PhotBundle\Entity\Photo", mappedBy="customer")
+     */
+    private $customerPhotos;
+
     public function __construct()
     {
         $this->customerCities = new ArrayCollection();
+        $this->customerPhotos = new ArrayCollection();
     }
 
     /**
@@ -274,8 +280,14 @@ class Customer
     public function setCustomerCities(ArrayCollection $customerCities)
     {
         foreach ($customerCities as $customerCity) {
-            $this->customerCities->first($customerCity);
+            $this->customerCities->add($customerCity);
         }
+
+        return $this;
+    }
+    public function intiCustomerCities()
+    {
+        $this->customerCities = new ArrayCollection();
 
         return $this;
     }

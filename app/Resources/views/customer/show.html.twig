@@ -9,16 +9,31 @@
                 <th>Username</th>
                 <td>{{ customer.username }}</td>
             </tr>
+
+            <tr>
+                <th>First name</th>
+                <td>{{ customer.firstName }}</td>
+            </tr>
+
+            <tr>
+                <th>
+                    Last name
+                </th>
+                <td>
+                    {{ customer.lastName }}</td>
+            </tr>
             <tr>
                 <th>Email</th>
                 <td>{{ customer.email }}</td>
             </tr>
             <tr>
-                <th>First name</th>
-                <td>{{ customer.firstName }}</td>
+                <th>Last login</th>
+                <td>
+                    {% if customer.lastLogin %}{{ customer.lastLogin|date('Y-m-d H:i:s') }}{% endif %}
+                </td>
             </tr>
             <tr>
-                <th>Customer Cities</th>
+                <th>Owner Cities</th>
                 <td>
                     {% for customerCity in customer.customerCities%}
                         <a href="{{ path('admin_customer_city_show' , {'id' : customerCity.id}) }}">
@@ -30,19 +45,6 @@
                     {% endfor %}
                 </td>
             </tr>
-            <tr>
-                <th>
-                    name</th>
-                <td>Last
-                    {{ customer.lastName }}</td>
-            </tr>
-            <tr>
-                <th>Last login</th>
-                <td>
-                    {% if customer.lastLogin %}{{ customer.lastLogin|date('Y-m-d H:i:s') }}{% endif %}
-                </td>
-            </tr>
-
         </tbody>
     </table>
 
