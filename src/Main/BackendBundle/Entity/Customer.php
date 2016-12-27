@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Main\CityBundle\Entity\CustomerCity;
 use Main\PhotoBundle\Entity\Photo;
+use Main\PhotoBundle\Entity\Album;
 
 /**
  * Customer.
@@ -368,7 +369,7 @@ class Customer
      *
      * @param \Main\PhotoBundle\Entity\Album $customerAlbum
      */
-    public function removeCustomerAlbum(Photo $customerAlbum)
+    public function removeCustomerAlbum(Album $customerAlbum)
     {
         $this->customerAlbums->removeElement($customerAlbum);
     }
