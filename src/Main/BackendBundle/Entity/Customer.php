@@ -61,9 +61,15 @@ class Customer
      */
     private $customerCities;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Main\PhotBundle\Entity\Photo", mappedBy="customer")
+     */
+    private $customerPhotos;
+
     public function __construct()
     {
         $this->customerCities = new ArrayCollection();
+        $this->customerPhotos = new ArrayCollection();
     }
 
     /**
