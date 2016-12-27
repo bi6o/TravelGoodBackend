@@ -3,6 +3,7 @@
 namespace Main\PhotoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Main\BackendBundle\Entity\Customer;
 
 /**
  * Photo.
@@ -163,13 +164,13 @@ class Photo
     }
 
     /**
-     * Set customer
+     * Set customer.
      *
      * @param \Main\BackendBundle\Entity\Customer $customer
      *
      * @return Photo
      */
-    public function setCustomer(\Main\BackendBundle\Entity\Customer $customer = null)
+    public function setCustomer(Customer $customer = null)
     {
         $this->customer = $customer;
 
@@ -177,7 +178,7 @@ class Photo
     }
 
     /**
-     * Get customer
+     * Get customer.
      *
      * @return \Main\BackendBundle\Entity\Customer
      */

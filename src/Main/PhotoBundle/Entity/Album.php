@@ -3,6 +3,7 @@
 namespace Main\PhotoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Main\BackendBundle\Entity\Customer;
 
 /**
  * Album.
@@ -51,6 +52,30 @@ class Album
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set customer.
+     *
+     * @param Customer $customer
+     *
+     * @return CustomerCity
+     */
+    public function setCustomer(Customer $customer = null)
+    {
+        $this->customer = $customer;
+
+        return $this;
+    }
+
+    /**
+     * Get customer.
+     *
+     * @return \Main\BackendBundle\Entity\Customer
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
     }
 
     /**
