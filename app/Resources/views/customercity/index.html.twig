@@ -8,14 +8,12 @@
             <tr>
                 <th>Id</th>
                 <th>City customer</th>
-                <th>name</th>
+                <th>Name</th>
                 <th>Date arrived</th>
                 <th>Date departed</th>
-                <th>Logitude</th>
-                <th>Latitude</th>
-                <th>Current city</th>
-                <th>Visited city</th>
-                <th>Lived city</th>
+                <th>Current</th>
+                <th>Visited</th>
+                <th>Lived</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -32,16 +30,17 @@
                             </a>
                         {% endif %}
                         <td>
-                            {% if customerCity.city %}{{ customerCity.city.city }}{% endif %}
+                            {% if customerCity.city %}{{ customerCity.city.city }}
+                                ,
+                                {{ customerCity.city.country }}{% endif %}
+                        </td>
+
+                        <td>
+                            {% if customerCity.dateArrived %}{{ customerCity.dateArrived|date('Y-m-d') }}{% endif %}
                         </td>
                         <td>
-                            {% if customerCity.dateArrived %}{{ customerCity.dateArrived|date('Y-m-d H:i:s') }}{% endif %}
+                            {% if customerCity.dateDeparted %}{{ customerCity.dateDeparted|date('Y-m-d') }}{% endif %}
                         </td>
-                        <td>
-                            {% if customerCity.dateDeparted %}{{ customerCity.dateDeparted|date('Y-m-d H:i:s') }}{% endif %}
-                        </td>
-                        <td>{{ customerCity.logitude }}</td>
-                        <td>{{ customerCity.latitude }}</td>
                         <td>
                             {% if customerCity.currentCity %}Yes{% else %}No{% endif %}
                         </td>

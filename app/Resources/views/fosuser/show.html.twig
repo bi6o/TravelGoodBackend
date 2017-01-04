@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Fosuser</h1>
+    <h1>System user</h1>
 
     <table>
         <tbody>
@@ -27,7 +27,9 @@
             </tr>
             <tr>
                 <th>Enabled</th>
-                <td>{% if fosUser.enabled %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    {% if fosUser.enabled %}Yes{% else %}No{% endif %}
+                </td>
             </tr>
             <tr>
                 <th>Salt</th>
@@ -39,7 +41,9 @@
             </tr>
             <tr>
                 <th>Lastlogin</th>
-                <td>{% if fosUser.lastLogin %}{{ fosUser.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    {% if fosUser.lastLogin %}{{ fosUser.lastLogin|date('Y-m-d H:i:s') }}{% endif %}
+                </td>
             </tr>
             <tr>
                 <th>Confirmationtoken</th>
@@ -47,11 +51,15 @@
             </tr>
             <tr>
                 <th>Passwordrequestedat</th>
-                <td>{% if fosUser.passwordRequestedAt %}{{ fosUser.passwordRequestedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    {% if fosUser.passwordRequestedAt %}{{ fosUser.passwordRequestedAt|date('Y-m-d H:i:s') }}{% endif %}
+                </td>
             </tr>
             <tr>
                 <th>Roles</th>
-                <td>{% if fosUser.roles %}{{ fosUser.roles|join(', ') }}{% endif %}</td>
+                <td>
+                    {% if fosUser.roles %}{{ fosUser.roles|join(', ') }}{% endif %}
+                </td>
             </tr>
         </tbody>
     </table>
@@ -65,7 +73,7 @@
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
     </ul>

@@ -5,7 +5,6 @@ namespace Main\PhotoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Main\BackendBundle\Entity\Customer;
 use Doctrine\Common\Collections\ArrayCollection;
-use Photo;
 
 /**
  * Album.
@@ -43,14 +42,14 @@ class Album
     /**
      * @var string
      *
-     * @ORM\Column(name="album_title", type="string", length=50, nullable=true)
+     * @ORM\Column(name="albumTitle", type="string", length=50, nullable=true)
      */
     private $albumTitle;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_created", type="datetime")
+     * @ORM\Column(name="dateCreated", type="datetime")
      */
     private $dateCreated;
 
@@ -193,63 +192,5 @@ class Album
         }
 
         return $this;
-    }
-
-    /**
-     * Set mainPhoto.
-     *
-     * @param \Main\PhotoBundle\Entity\Photo $mainPhoto
-     *
-     * @return Album
-     */
-    public function setMainPhoto(Photo $mainPhoto = null)
-    {
-        $this->mainPhoto = $mainPhoto;
-
-        return $this;
-    }
-
-    /**
-     * Get mainPhoto.
-     *
-     * @return \Main\PhotoBundle\Entity\Photo
-     */
-    public function getMainPhoto()
-    {
-        return $this->mainPhoto;
-    }
-
-    /**
-     * Add photo.
-     *
-     * @param \Main\PhotoBundle\Entity\Photo $photo
-     *
-     * @return Album
-     */
-    public function addPhoto(Photo $photo)
-    {
-        $this->photos[] = $photo;
-
-        return $this;
-    }
-
-    /**
-     * Remove photo.
-     *
-     * @param \Main\PhotoBundle\Entity\Photo $photo
-     */
-    public function removePhoto(Photo $photo)
-    {
-        $this->photos->removeElement($photo);
-    }
-
-    /**
-     * Get photos.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPhotos()
-    {
-        return $this->photos;
     }
 }

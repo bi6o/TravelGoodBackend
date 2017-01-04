@@ -14,6 +14,12 @@
                     <th>City name</th>
                     <td>{{ customerCity.city.city }}</td>
                 </tr>
+
+                <tr>
+                    <th>Country</th>
+                    <td>{{ customerCity.city.country }}</td>
+                </tr>
+
                 <tr>
                     <th>Date arrived</th>
                     <td>
@@ -39,19 +45,19 @@
                     <td>{{ customerCity.cityBrief }}</td>
                 </tr>
                 <tr>
-                    <th>Current city</th>
+                    <th>Current</th>
                     <td>
                         {% if customerCity.currentCity %}Yes{% else %}No{% endif %}
                     </td>
                 </tr>
                 <tr>
-                    <th>Visited city</th>
+                    <th>Visited</th>
                     <td>
                         {% if customerCity.visitedCity %}Yes{% else %}No{% endif %}
                     </td>
                 </tr>
                 <tr>
-                    <th>Lived city</th>
+                    <th>Lived</th>
                     <td>
                         {% if customerCity.livedCity %}Yes{% else %}No{% endif %}
                     </td>

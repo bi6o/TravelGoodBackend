@@ -3,6 +3,7 @@
 namespace Main\PhotoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Main\BackendBundle\Entity\Customer;
 
 /**
@@ -29,6 +30,7 @@ class Photo
      * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
      */
     private $customer;
+
     /**
      * @var string
      *
@@ -56,6 +58,14 @@ class Photo
      * @ORM\Column(name="photo_type", type="string", length=50)
      */
     private $photoType;
+
+     /**
+      * @var ArrayCollection
+      *
+      * @ORM\ManyToOne(targetEntity="Album" , inversedBy="albumPhotos")
+      * @ORM\JoinColumn(name="album_id", referencedColumnName="id")
+      */
+     private $album;
 
     /**
      * Get id.
@@ -185,5 +195,28 @@ class Photo
     public function getCustomer()
     {
         return $this->customer;
+    }
+    /**
+     * Set album.
+     *
+     * @param Album $album
+     *
+     * @return Photo
+     */
+    public function setAlbum(Album $album = null)
+    {
+        $this->album = $album;
+
+        return $this;
+    }
+
+    /**
+     * Get album.
+     *
+     * @return Album
+     */
+    public function getAlbum()
+    {
+        return $this->album;
     }
 }

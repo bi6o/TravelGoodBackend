@@ -4,7 +4,22 @@
     <h1>Customer edit</h1>
 
     {{ form_start(edit_form) }}
-    {{ form_widget(edit_form) }}
+
+    {{ form_row(edit_form.username) }}
+    {{ form_row(edit_form.firstName) }}
+    {{ form_row(edit_form.lastName) }}
+    {{ form_row(edit_form.password) }}
+    {{ form_row(edit_form.email) }}
+
+    <h3>Cities</h3>
+
+    <ul class="cities" data-prototype="{{form_widget(edit_form.customerCities.vars.prototype)|e('html_attr')}}">
+
+        {% for city in edit_form.customerCities %}
+            <li>{{ form_row(city.cityName) }}</li>
+        {% endfor %}
+
+    </ul>
     <input type="submit" value="Edit"/>
     {{ form_end(edit_form) }}
 

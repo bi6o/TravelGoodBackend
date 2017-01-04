@@ -24,6 +24,7 @@ table tr{
 }
 #main_backendbundle_customer,
 #main_backendbundle_fosuser,
+#main_backend_admin_customer_city,
 input[type="submit"]{
     margin-left:3%;
 }
@@ -36,8 +37,9 @@ input[type="submit"]{
 #main_backendbundle_customer input,
 #main_backendbundle_fosuser label,
 #main_backendbundle_fosuser input,
-#main_backendbundle_customercity label,
-#main_backendbundle_customercity input{
+#main_backend_admin_customer_city label,
+#main_backend_admin_customer_city input
+{
 
     width: 200px;
     margin-top:5px;

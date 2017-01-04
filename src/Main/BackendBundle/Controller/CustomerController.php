@@ -58,15 +58,24 @@ class CustomerController extends Controller
     {
         $deleteForm = $this->createDeleteForm($customer);
 
+        $customer = $this->initCollectionArrays($customer);
+
         $customerCities = $this->findCities($customer);
 
-        $customer->intiCustomerCities();
         $customer->setCustomerCities($customerCities);
 
         return $this->render('customer/show.html.twig', array(
             'customer' => $customer,
             'delete_form' => $deleteForm->createView(),
         ));
+    }
+
+    public function initCollectionArrays(Customer $customer)
+    {
+        $customer->initCustomerCities();
+        $customer->initCustomerAlbums();
+
+        return $customer;
     }
 
     private function findCities(Customer $customer)
@@ -90,6 +99,9 @@ class CustomerController extends Controller
     public function editAction(Request $request, Customer $customer)
     {
         $deleteForm = $this->createDeleteForm($customer);
+
+        $customer = $this->initCollectionArrays($customer);
+
         $editForm = $this->createForm('Main\BackendBundle\Form\CustomerType', $customer);
         $editForm->handleRequest($request);
 

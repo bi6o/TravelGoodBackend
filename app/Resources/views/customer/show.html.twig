@@ -35,7 +35,7 @@
             <tr>
                 <th>Owner Cities</th>
                 <td>
-                    {% for customerCity in customer.customerCities%}
+                    {% for customerCity in customer.customerCities %}
                         <a href="{{ path('admin_customer_city_show' , {'id' : customerCity.id}) }}">
                             {{ customerCity.city.city }}
                         </a>
@@ -45,6 +45,23 @@
                     {% endfor %}
                 </td>
             </tr>
+
+            <tr>
+                <th>Albums</th>
+                <td>
+                    {% if customer.customerAlbums is not null %}
+                        {% for album in customer.customerAlbums %}
+
+                            {{ album.albumTitle }}
+
+                            {% if not loop.last %}
+                                ,
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </td>
+            </tr>
+
         </tbody>
     </table>
 

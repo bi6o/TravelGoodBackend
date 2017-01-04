@@ -59,6 +59,12 @@ class Customer
     private $lastLogin;
 
     /**
+     * @ORM\OneToOne(targetEntity="Main\BackendBundle\Entity\CustomerInfo", mappedBy="customer")
+     * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
+     */
+    private $info;
+
+    /**
      * @ORM\OneToMany(targetEntity="Main\CityBundle\Entity\CustomerCity", mappedBy="customer")
      */
     private $customerCities;
@@ -268,13 +274,19 @@ class Customer
         $this->customerCities->removeElement($customerCity);
     }
 
-    public function intiCustomerCities()
+    public function initCustomerCities()
     {
         $this->customerCities = new ArrayCollection();
 
         return $this;
     }
 
+    public function initCustomerAlbums()
+    {
+        $this->customerAlbums = new ArrayCollection();
+
+        return $this;
+    }
     /**
      * Get customerCities.
      *
@@ -398,5 +410,29 @@ class Customer
         }
 
         return $this;
+    }
+
+    /**
+     * Set info.
+     *
+     * @param CustomerInfo $info
+     *
+     * @return Customer
+     */
+    public function setInfo(CustomerInfo $info = null)
+    {
+        $this->info = $info;
+
+        return $this;
+    }
+
+    /**
+     * Get info.
+     *
+     * @return \Main\BackendBundle\Entity\CustomerInfo
+     */
+    public function getInfo()
+    {
+        return $this->info;
     }
 }
