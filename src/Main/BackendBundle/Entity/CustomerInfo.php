@@ -66,4 +66,52 @@ class CustomerInfo
     {
         return $this->interests;
     }
+
+    /**
+     * Set profilePicture
+     *
+     * @param \Main\PhotoBundle\Entity\Photo $profilePicture
+     *
+     * @return CustomerInfo
+     */
+    public function setProfilePicture(\Main\PhotoBundle\Entity\Photo $profilePicture = null)
+    {
+        $this->profilePicture = $profilePicture;
+
+        return $this;
+    }
+
+    /**
+     * Get profilePicture
+     *
+     * @return \Main\PhotoBundle\Entity\Photo
+     */
+    public function getProfilePicture()
+    {
+        return $this->profilePicture;
+    }
+
+    /**
+     * Set customer
+     *
+     * @param \Main\BackendBundle\Entity\Customer $customer
+     *
+     * @return CustomerInfo
+     */
+    public function setCustomer(\Main\BackendBundle\Entity\Customer $customer = null)
+    {
+        $this->customer = $customer;
+
+        return $this;
+    }
+
+    /**
+     * Get customer
+     *
+     * @return \Main\BackendBundle\Entity\Customer
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
 }

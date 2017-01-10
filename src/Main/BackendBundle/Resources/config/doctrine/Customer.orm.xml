@@ -41,5 +41,10 @@
     </one-to-many>
     <one-to-many field="customerAlbums" target-entity="Main\PhotoBundle\Entity\Album" mapped-by="customer" fetch="LAZY">
     </one-to-many>
+    <one-to-one field="info" target-entity="CustomerInfo" fetch="LAZY" mapped_by="customer">
+        <join-columns>
+          <join-column name="info_id" referenced-column-name="id"/>
+        </join-columns>
+    </one-to-one>
   </entity>
 </doctrine-mapping>

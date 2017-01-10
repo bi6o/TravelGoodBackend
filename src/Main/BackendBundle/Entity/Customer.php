@@ -59,6 +59,12 @@ class Customer
     private $lastLogin;
 
     /**
+     * @ORM\OneToOne(targetEntity="CustomerInfo" , mappedBy="customer")
+     * @ORM\JoinColumn(name="info_id", referencedColumnName="id")
+     */
+    private $info;
+
+    /**
      * @ORM\OneToMany(targetEntity="Main\CityBundle\Entity\CustomerCity", mappedBy="customer")
      */
     private $customerCities;
@@ -398,5 +404,29 @@ class Customer
         }
 
         return $this;
+    }
+
+    /**
+     * Set info
+     *
+     * @param \Main\BackendBundle\Entity\CustomerInfo $info
+     *
+     * @return Customer
+     */
+    public function setInfo(\Main\BackendBundle\Entity\CustomerInfo $info = null)
+    {
+        $this->info = $info;
+
+        return $this;
+    }
+
+    /**
+     * Get info
+     *
+     * @return \Main\BackendBundle\Entity\CustomerInfo
+     */
+    public function getInfo()
+    {
+        return $this->info;
     }
 }

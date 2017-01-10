@@ -5,6 +5,8 @@ namespace Main\BackendBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Main\CityBundle\Entity\CustomerCity;
+use Main\PhotoBundle\Entity\Photo;
+use Main\PhotoBundle\Entity\Album;
 
 /**
  * Customer.
@@ -57,19 +59,31 @@ class Customer
     private $lastLogin;
 
     /**
+     * @ORM\OneToOne(targetEntity="CustomerInfo" , mappedBy="customer")
+     * @ORM\JoinColumn(name="info_id", referencedColumnName="id")
+     */
+    private $info;
+
+    /**
      * @ORM\OneToMany(targetEntity="Main\CityBundle\Entity\CustomerCity", mappedBy="customer")
      */
     private $customerCities;
 
     /**
-     * @ORM\OneToMany(targetEntity="Main\PhotBundle\Entity\Photo", mappedBy="customer")
+     * @ORM\OneToMany(targetEntity="Main\PhotoBundle\Entity\Photo", mappedBy="customer")
      */
     private $customerPhotos;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Main\PhotoBundle\Entity\Album", mappedBy="customer")
+     */
+    private $customerAlbums;
 
     public function __construct()
     {
         $this->customerCities = new ArrayCollection();
         $this->customerPhotos = new ArrayCollection();
+        $this->customerAlbums = new ArrayCollection();
     }
 
     /**
@@ -260,6 +274,13 @@ class Customer
         $this->customerCities->removeElement($customerCity);
     }
 
+    public function intiCustomerCities()
+    {
+        $this->customerCities = new ArrayCollection();
+
+        return $this;
+    }
+
     /**
      * Get customerCities.
      *
@@ -285,9 +306,102 @@ class Customer
 
         return $this;
     }
-    public function intiCustomerCities()
+    /**
+     * Add customerPhoto.
+     *
+     * @param \Main\PhotoBundle\Entity\Photo $customerPhoto
+     *
+     * @return Customer
+     */
+    public function addCustomerPhoto(Photo $customerPhoto)
     {
-        $this->customerCities = new ArrayCollection();
+        $this->customerPhotos->add($customerPhoto);
+
+        return $this;
+    }
+
+    /**
+     * Remove customerPhoto.
+     *
+     * @param \Main\PhotoBundle\Entity\Photo $customerPhoto
+     */
+    public function removeCustomerPhoto(Photo $customerPhoto)
+    {
+        $this->customerPhotos->removeElement($customerPhoto);
+    }
+
+    /**
+     * Get customerPhotos.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCustomerPhotos()
+    {
+        return $this->customerPhotos->toArray();
+    }
+
+    /**
+     * Set customerPhotos.
+     *
+     * @param \ArrayCollection $customerPhotos
+     *
+     * @return Customer
+     */
+    public function setCustomerPhotos(ArrayCollection $customerPhotos)
+    {
+        foreach ($customerPhotos as $customerPhoto) {
+            $this->customerPhotos->add($customerPhoto);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Add customerAlbum.
+     *
+     * @param \Main\PhotoBundle\Entity\Album $customerAlbum
+     *
+     * @return Customer
+     */
+    public function addCustomerAlbum(Album $customerAlbum)
+    {
+        $this->customerAlbums->add($customerAlbum);
+
+        return $this;
+    }
+
+    /**
+     * Remove customerAlbum.
+     *
+     * @param \Main\PhotoBundle\Entity\Album $customerAlbum
+     */
+    public function removeCustomerAlbum(Album $customerAlbum)
+    {
+        $this->customerAlbums->removeElement($customerAlbum);
+    }
+
+    /**
+     * Get customerPhotos.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCustomerAlbums()
+    {
+        return $this->customerAlbums->toArray();
+    }
+
+    /**
+     * Set customerPhotos.
+     *
+     * @param \ArrayCollection $customerAlbums
+     *
+     * @return Customer
+     */
+    public function setCustomerAlbums(ArrayCollection $customerAlbums)
+    {
+        foreach ($customerAlbums as $customerAlbum) {
+            $this->customerAlbums->add($customerAlbum);
+        }
 
         return $this;
     }
