@@ -1,0 +1,81 @@
+<?php
+
+namespace Main\BackendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CustomerInfo.
+ *
+ * @ORM\Table(name="customer_info")
+ * @ORM\Entity
+ */
+class CustomerInfo
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="customer_info_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="interests", type="string", length=255, nullable=true)
+     */
+    private $interests;
+
+    /**
+     * @var int
+     *
+     * @ORM\OneToOne(targetEntity="Main\PhotoBundle\Photo")
+     * @ORM\JoinColumn(name="profile_picture_id", referencedColumnName="id")
+     */
+    private $profilePicture;
+
+    /**
+     * @var int
+     *
+     * @ORM\OneToOne(targetEntity="Main\BackendBundle\Entity\Customer", inversedBy="info")
+     * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
+     */
+    private $customer;
+
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set interests.
+     *
+     * @param string $interests
+     *
+     * @return CustomerInfo
+     */
+    public function setInterests($interests)
+    {
+        $this->interests = $interests;
+
+        return $this;
+    }
+
+    /**
+     * Get interests.
+     *
+     * @return string
+     */
+    public function getInterests()
+    {
+        return $this->interests;
+    }
+}
