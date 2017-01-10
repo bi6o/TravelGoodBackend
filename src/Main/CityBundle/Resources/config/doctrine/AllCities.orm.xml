@@ -10,7 +10,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="cityascii" type="string" column="cityascii" length="39" nullable="false">
+    <field name="cityAscii" type="string" column="cityascii" length="39" nullable="false">
       <options>
         <option name="fixed"/>
       </options>

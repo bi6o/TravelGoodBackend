@@ -8,12 +8,12 @@
       <generator strategy="SEQUENCE"/>
       <sequence-generator sequence-name="album_id_seq" allocation-size="1" initial-value="1"/>
     </id>
-    <field name="albumtitle" type="string" column="albumtitle" length="50" nullable="true">
+    <field name="albumTitle" type="string" column="albumtitle" length="50" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="datecreated" type="datetime" column="datecreated" nullable="false"/>
+    <field name="dateCreated" type="datetime" column="datecreated" nullable="false"/>
     <many-to-one field="customer" target-entity="Main\BackendBundle\Entity\Customer" fetch="LAZY">
       <join-columns>
         <join-column name="customer_id" referenced-column-name="id"/>

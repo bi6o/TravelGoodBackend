@@ -21,7 +21,7 @@
     <field name="currentCity" type="boolean" column="current_city" nullable="false"/>
     <field name="visitedCity" type="boolean" column="visited_city" nullable="false"/>
     <field name="livedCity" type="boolean" column="lived_city" nullable="false"/>
-    <many-to-one field="customer" target-entity="Customer" fetch="LAZY">
+    <many-to-one field="customer" target-entity="Main\BackendBundle\Entity\Customer" fetch="LAZY">
       <join-columns>
         <join-column name="customer_id" referenced-column-name="id"/>
       </join-columns>
