@@ -26,7 +26,13 @@ class CustomerType extends AbstractType
         ->add('customerCities', CollectionType::class, [
             'by_reference' => false,
             'allow_delete' => true,
-            'entry_type' => 'Main\BackendBundle\Form\CustomerCityType',
+            'entry_type' => 'Main\CityBundle\Form\CustomerCityType',
+            'allow_add' => true,
+        ])
+        ->add('info', CollectionType::class, [
+            'by_reference' => false,
+            'allow_delete' => true,
+            'entry_type' => 'Main\BackendBundle\Form\CustomerInfoType',
             'allow_add' => true,
         ]);
     }

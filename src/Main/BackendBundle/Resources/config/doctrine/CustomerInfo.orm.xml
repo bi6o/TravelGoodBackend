@@ -15,10 +15,6 @@
           <join-column name="profile_picture_id" referenced-column-name="id"/>
         </join-columns>
     </one-to-one>
-    <one-to-one field="customer" target-entity="Customer" fetch="LAZY" inversed_by="info">
-        <join-columns>
-          <join-column name="customer_id" referenced-column-name="id"/>
-        </join-columns>
-    </one-to-one>
+    
   </entity>
 </doctrine-mapping>

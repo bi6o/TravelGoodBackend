@@ -26,14 +26,6 @@ class CustomerInfo
     private $profilePicture;
 
     /**
-     * @var int
-     *
-     * @ORM\OneToOne(targetEntity="Main\BackendBundle\Entity\Customer", inversedBy="info")
-     * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
-     */
-    private $customer;
-
-    /**
      * Get id.
      *
      * @return int
@@ -68,7 +60,7 @@ class CustomerInfo
     }
 
     /**
-     * Set profilePicture
+     * Set profilePicture.
      *
      * @param \Main\PhotoBundle\Entity\Photo $profilePicture
      *
@@ -82,36 +74,12 @@ class CustomerInfo
     }
 
     /**
-     * Get profilePicture
+     * Get profilePicture.
      *
      * @return \Main\PhotoBundle\Entity\Photo
      */
     public function getProfilePicture()
     {
         return $this->profilePicture;
-    }
-
-    /**
-     * Set customer
-     *
-     * @param \Main\BackendBundle\Entity\Customer $customer
-     *
-     * @return CustomerInfo
-     */
-    public function setCustomer(\Main\BackendBundle\Entity\Customer $customer = null)
-    {
-        $this->customer = $customer;
-
-        return $this;
-    }
-
-    /**
-     * Get customer
-     *
-     * @return \Main\BackendBundle\Entity\Customer
-     */
-    public function getCustomer()
-    {
-        return $this->customer;
     }
 }

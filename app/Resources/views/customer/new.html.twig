@@ -21,6 +21,16 @@
 
     </ul>
 
+    <h3>Customer information</h3>
+
+    <ul class="info" data-prototype="{{form_widget(form.info.vars.prototype)|e('html_attr')}}">
+
+        {% for infoField in form.info %}
+            <li>{{ form_row(city.infoField) }}</li>
+        {% endfor %}
+
+    </ul>
+
     <input type="submit" value="Create"/>
 
     {{ form_end(form) }}
