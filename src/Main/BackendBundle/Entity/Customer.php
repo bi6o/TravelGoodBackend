@@ -59,8 +59,8 @@ class Customer
     private $lastLogin;
 
     /**
-     * @ORM\OneToOne(targetEntity="Main\BackendBundle\Entity\CustomerInfo", mappedBy="customer")
-     * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="CustomerInfo" , mappedBy="customer")
+     * @ORM\JoinColumn(name="info_id", referencedColumnName="id")
      */
     private $info;
 
@@ -415,11 +415,11 @@ class Customer
     /**
      * Set info.
      *
-     * @param CustomerInfo $info
+     * @param \Main\BackendBundle\Entity\CustomerInfo $info
      *
      * @return Customer
      */
-    public function setInfo(CustomerInfo $info = null)
+    public function setInfo(\Main\BackendBundle\Entity\CustomerInfo $info = null)
     {
         $this->info = $info;
 
