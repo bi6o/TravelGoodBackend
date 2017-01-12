@@ -2,6 +2,8 @@
 
 namespace Main\BackendBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * CustomerInfo.
  */
@@ -20,7 +22,7 @@ class CustomerInfo
     /**
      * @var int
      *
-     * @ORM\OneToOne(targetEntity="Main\PhotoBundle\Photo")
+     * @ORM\OneToOne(targetEntity="Main\PhotoBundle\Entity\Photo")
      * @ORM\JoinColumn(name="profile_picture_id", referencedColumnName="id")
      */
     private $profilePicture;
