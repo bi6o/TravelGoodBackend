@@ -24,7 +24,7 @@ class CustomerCityController extends Controller
             $customer = $this->findCustomerOfCity($customerCity);
 
             if ($customer != null) {
-                $customerCity->setCustomer($customer);
+                $customerCity->getPoint()->setCustomer($customer);
             }
         }
 
@@ -45,6 +45,7 @@ class CustomerCityController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($customerCity);
+            $em->persist($customerCity->getPoint());
             $em->flush($customerCity);
 
             return $this->redirectToRoute('admin_customer_city_show', array('id' => $customerCity->getId()));
@@ -63,7 +64,7 @@ class CustomerCityController extends Controller
     {
         $deleteForm = $this->createDeleteForm($customerCity);
 
-        $customerCity->setCustomer($this->findCustomerOfCity($customerCity));
+        $customerCity->getPoint()->setCustomer($this->findCustomerOfCity($customerCity));
 
         return $this->render('customercity/show.html.twig', array(
             'customerCity' => $customerCity,
@@ -73,8 +74,8 @@ class CustomerCityController extends Controller
 
     private function findCustomerOfCity(CustomerCity $customerCity)
     {
-        if ($customerCity->getCustomer() !== null) {
-            return $customer = $this->getDoctrine()->getRepository('MainBackendBundle:Customer')->find($customerCity->getCustomer()->getId());
+        if ($customerCity->getPoint() !== null && $customerCity->getPoint()->getCustomer() !== null) {
+            return $customer = $this->getDoctrine()->getRepository('MainBackendBundle:Customer')->find($customerCity->getPoint()->getCustomer()->getId());
         }
 
         return null;

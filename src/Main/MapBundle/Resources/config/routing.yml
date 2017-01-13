@@ -1,3 +1,7 @@
+main_map_admin_point:
+    resource: "@MainMapBundle/Resources/config/routing/point.yml"
+    prefix:   /admin/point
+
 main_map_homepage:
     path:     /admin/map
     defaults: { _controller: MainMapBundle:Default:index }

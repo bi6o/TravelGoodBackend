@@ -65,7 +65,7 @@ class Customer
     private $info;
 
     /**
-     * @ORM\OneToMany(targetEntity="Main\CityBundle\Entity\CustomerCity", mappedBy="customer")
+     * @ORM\OneToMany(targetEntity="Main\MapBundle\Entity\Point", mappedBy="customer")
      */
     private $customerCities;
 

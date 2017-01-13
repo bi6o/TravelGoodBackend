@@ -2,6 +2,8 @@
 
 namespace Main\BackendBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * CustomerInfo.
  */
@@ -65,5 +67,29 @@ class CustomerInfo
     public function getInterests()
     {
         return $this->interests;
+    }
+
+    /**
+     * Set profilePicture.
+     *
+     * @param \Main\PhotoBundle\Entity\Photo $profilePicture
+     *
+     * @return CustomerInfo
+     */
+    public function setProfilePicture(\Main\PhotoBundle\Entity\Photo $profilePicture = null)
+    {
+        $this->profilePicture = $profilePicture;
+
+        return $this;
+    }
+
+    /**
+     * Get profilePicture.
+     *
+     * @return \Main\PhotoBundle\Entity\Photo
+     */
+    public function getProfilePicture()
+    {
+        return $this->profilePicture;
     }
 }

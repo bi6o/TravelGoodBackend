@@ -24,16 +24,17 @@
         </li>
     </ul>
 
-    <script>
-        function cityOnTheMap() {
-            var mapCanvas = document.getElementById("map");
-            var mapOptions = {
-                center: new google.maps.LatLng({{customerCity.getLatitude}}, {{customerCity.getLogitude}}),
-                zoom: 12
+    {% if customerCity.point is not null %}
+        <script>
+            function cityOnTheMap() {
+                var mapCanvas = document.getElementById("map");
+                var mapOptions = {
+                    center: new google.maps.LatLng({{customerCity.point.getLatitude}}, {{customerCity.point.getLogitude}}),
+                    zoom: 12
+                }
+                var map = new google.maps.Map(mapCanvas, mapOptions);
             }
-            var map = new google.maps.Map(mapCanvas, mapOptions);
-        }
-    </script>
-
+        </script>
+    {% endif %}
     <script src="https://maps.googleapis.com/maps/api/js?callback=cityOnTheMap&key=AIzaSyDWRksnVtfXTXSdWBnw0BOjh53xvmeg-e0"></script>
 {% endblock %}

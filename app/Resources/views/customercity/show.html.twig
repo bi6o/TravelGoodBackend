@@ -12,33 +12,33 @@
 
                 <tr>
                     <th>City name</th>
-                    <td>{{ customerCity.city.city }}</td>
+                    <td>{{ customerCity.point.city.city }}</td>
                 </tr>
 
                 <tr>
                     <th>Country</th>
-                    <td>{{ customerCity.city.country }}</td>
+                    <td>{{ customerCity.point.city.country }}</td>
                 </tr>
 
                 <tr>
                     <th>Date arrived</th>
                     <td>
-                        {% if customerCity.dateArrived %}{{ customerCity.dateArrived|date('Y-m-d H:i:s') }}{% endif %}
+                        {% if customerCity.point.dateArrived %}{{ customerCity.point.dateArrived|date('Y-m-d H:i:s') }}{% endif %}
                     </td>
                 </tr>
                 <tr>
                     <th>Date departed</th>
                     <td>
-                        {% if customerCity.dateDeparted %}{{ customerCity.dateDeparted|date('Y-m-d H:i:s') }}{% endif %}
+                        {% if customerCity.point.dateDeparted %}{{ customerCity.point.dateDeparted|date('Y-m-d H:i:s') }}{% endif %}
                     </td>
                 </tr>
                 <tr>
                     <th>Logitude</th>
-                    <td>{{ customerCity.logitude }}</td>
+                    <td>{{ customerCity.point.logitude }}</td>
                 </tr>
                 <tr>
                     <th>Latitude</th>
-                    <td>{{ customerCity.latitude }}</td>
+                    <td>{{ customerCity.point.latitude }}</td>
                 </tr>
                 <tr>
                     <th>City breif</th>
@@ -66,7 +66,7 @@
                     <th>
                         Owner</th>
                     <td>
-                        {% if customerCity.customer %}{{customerCity.customer.username}}{% endif %}
+                        {% if customerCity.point.customer %}{{customerCity.point.customer.username}}{% endif %}
                     </td>
                 </tr>
             </tbody>
@@ -95,7 +95,7 @@
         function cityOnTheMap() {
             var mapCanvas = document.getElementById("map");
             var mapOptions = {
-                center: new google.maps.LatLng({{customerCity.getLatitude}}, {{customerCity.getLogitude}}),
+                center: new google.maps.LatLng({{customerCity.point.getLatitude}}, {{customerCity.point.getLogitude}}),
                 zoom: 12
             }
             var map = new google.maps.Map(mapCanvas, mapOptions);

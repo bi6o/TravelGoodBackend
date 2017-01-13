@@ -2,10 +2,8 @@
 
 namespace Main\MapBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Main\BackendBundle\Entity\Customer;
 use Main\CityBundle\Entity\CustomerCity;
-use Main\CityBundle\Entity\AllCities;
 
 /**
  * Point.
@@ -92,7 +90,7 @@ class Point
      *
      * @return CustomerCity
      */
-    public function setCity(AllCities $city = null)
+    public function setCity(\Main\CityBundle\Entity\AllCities $city = null)
     {
         $this->city = $city;
 

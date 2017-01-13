@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Points list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Logitude</th>
+                <th>Latitude</th>
+                <th>Datearrived</th>
+                <th>Datedeparted</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for point in points %}
+            <tr>
+                <td><a href="{{ path('admin_point_show', { 'id': point.id }) }}">{{ point.logitude }}</a></td>
+                <td>{{ point.latitude }}</td>
+                <td>{% if point.dateArrived %}{{ point.dateArrived|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if point.dateDeparted %}{{ point.dateDeparted|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ point.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_point_show', { 'id': point.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_point_edit', { 'id': point.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_point_new') }}">Create a new point</a>
+        </li>
+    </ul>
+{% endblock %}

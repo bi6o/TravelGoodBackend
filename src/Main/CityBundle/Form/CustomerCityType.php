@@ -4,9 +4,9 @@ namespace Main\CityBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Main\MapBundle\Entity\Point;
+use Main\MapBundle\Form\PointType;
 
 class CustomerCityType extends AbstractType
 {
@@ -15,32 +15,12 @@ class CustomerCityType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('city', EntityType::class, [
-            'class' => 'Main\CityBundle\Entity\AllCities',
-            'choice_label' => 'city',
-        ])
-                ->add('dateArrived', DateTimeType::class
-                //@todo: add bootstrap's DatePicker using the comments and adding the needed js file
-                // , [
-                //     'widget' => 'single_text', 'format' => 'dd-MM-yyyy',
-                //     'attr' => [
-                //        'class' => 'form-control input-inline datepicker',
-                //        'data-provide' => 'datepicker',
-                //        'data-date-format' => 'dd-mm-yyyy',
-                //     ],
-                // ]
-                )
-                ->add('dateDeparted')
-                ->add('logitude')
-                ->add('latitude')
+        $builder->add('point', PointType::class)
                 ->add('cityBrief')
                 ->add('currentCity')
                 ->add('visitedCity')
                 ->add('livedCity')
-                ->add('customer', EntityType::class, [
-            'class' => 'Main\BackendBundle\Entity\Customer',
-            'choice_label' => 'username',
-        ]);
+                ;
     }
 
     /**

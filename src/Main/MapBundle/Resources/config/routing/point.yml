@@ -1,0 +1,24 @@
+admin_point_index:
+    path:     /
+    defaults: { _controller: "MainMapBundle:Point:index" }
+    methods:  GET
+
+admin_point_show:
+    path:     /{id}/show
+    defaults: { _controller: "MainMapBundle:Point:show" }
+    methods:  GET
+
+admin_point_new:
+    path:     /new
+    defaults: { _controller: "MainMapBundle:Point:new" }
+    methods:  [GET, POST]
+
+admin_point_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainMapBundle:Point:edit" }
+    methods:  [GET, POST]
+
+admin_point_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MainMapBundle:Point:delete" }
+    methods:  DELETE
