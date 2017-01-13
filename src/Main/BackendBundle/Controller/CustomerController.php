@@ -33,13 +33,17 @@ class CustomerController extends Controller
     public function newAction(Request $request)
     {
         $customer = new Customer();
-
         $form = $this->createForm('Main\BackendBundle\Form\CustomerType', $customer);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($customer);
+            $em->persist($customer->getInfo());
+            $profilePicture = $customer->getInfo()->getProfilePicture();
+            $profilePicture->setDateUploaded(new \DateTime());
+            $profilePicture->setPhotoType('Profile Picture');
+            $em->persist($profilePicture);
             $em->flush($customer);
 
             return $this->redirectToRoute('admin_customer_show', array('id' => $customer->getId()));
@@ -85,7 +89,7 @@ class CustomerController extends Controller
         $this->getDoctrine()->getRepository('MainCityBundle:CustomerCity')->findAll();
 
         foreach ($cities as $city) {
-            if ($city->getCustomer() === $customer) {
+            if ($city->getPoint()->getCustomer() === $customer) {
                 $customerCities->add($city);
             }
         }

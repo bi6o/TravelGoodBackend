@@ -37,7 +37,7 @@
                 <td>
                     {% for customerCity in customer.customerCities %}
                         <a href="{{ path('admin_customer_city_show' , {'id' : customerCity.id}) }}">
-                            {{ customerCity.city.city }}
+                            {{ customerCity.point.city.city }}
                         </a>
                         {% if not loop.last %}
                             ,

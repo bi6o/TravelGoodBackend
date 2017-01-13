@@ -29,12 +29,7 @@ class CustomerType extends AbstractType
             'entry_type' => 'Main\CityBundle\Form\CustomerCityType',
             'allow_add' => true,
         ])
-        ->add('info', CollectionType::class, [
-            'by_reference' => false,
-            'allow_delete' => true,
-            'entry_type' => 'Main\BackendBundle\Form\CustomerInfoType',
-            'allow_add' => true,
-        ]);
+        ->add('info', CustomerInfoType::class);
     }
 
     /**
@@ -44,6 +39,7 @@ class CustomerType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'Main\BackendBundle\Entity\Customer',
+            'csrf_protection' => false,
         ));
     }
 

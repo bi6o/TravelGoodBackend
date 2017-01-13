@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class PhotoType extends AbstractType
 {
@@ -18,6 +19,12 @@ class PhotoType extends AbstractType
         $builder
         ->add('photoTitle', TextType::class)
         ->add('photoUrl', TextType::class)
+        ->add('photoType', ChoiceType::class, [
+            'choices' => [
+                'profilePicture' => 'Profile Picture',
+                'cityPicture' => 'city Picutre',
+            ],
+        ])
         ->add('dateUploaded', DateTimeType::class);
     }
 

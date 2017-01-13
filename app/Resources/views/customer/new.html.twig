@@ -11,8 +11,10 @@
     {{ form_row(form.password) }}
     {{ form_row(form.email) }}
 
-    <h3>Cities</h3>
-
+    <h3>Customer information</h3>
+    {{ form_row(form.info.interests) }}
+    {{ form_row(form.info.profilePicture.photoTitle) }}
+    {{ form_row(form.info.profilePicture.photoUrl) }}
     <ul class="cities" data-prototype="{{form_widget(form.customerCities.vars.prototype)|e('html_attr')}}">
 
         {% for city in form.customerCities %}
@@ -21,19 +23,8 @@
 
     </ul>
 
-    <h3>Customer information</h3>
-
-    <ul class="info" data-prototype="{{form_widget(form.info.vars.prototype)|e('html_attr')}}">
-
-        {% for infoField in form.info %}
-            <li>{{ form_row(city.infoField) }}</li>
-        {% endfor %}
-
-    </ul>
-
     <input type="submit" value="Create"/>
-
-    {{ form_end(form) }}
+    {{ form_end(form, {'render_rest' : false}) }}
 
     <li>
         <a href="{{ path('admin_customer_index') }}">Back to the list</a>

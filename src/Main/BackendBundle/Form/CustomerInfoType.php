@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Main\PhotoBundle\Form\PhotoType;
 
 class CustomerInfoType extends AbstractType
 {
@@ -17,12 +17,7 @@ class CustomerInfoType extends AbstractType
     {
         $builder
         ->add('interests', TextType::class)
-        ->add('profilePicture', CollectionType::class, [
-            'by_reference' => false,
-            'allow_delete' => true,
-            'entry_type' => 'Main\PhotoBundle\Form\PhotoType',
-            'allow_add' => true,
-        ]);
+        ->add('profilePicture', PhotoType::class);
     }
 
     /**
