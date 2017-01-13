@@ -1,3 +1,7 @@
+main_map:
+    resource: "@MainMapBundle/Resources/config/routing.yml"
+    prefix:   /
+
 main_photo:
     resource: "@MainPhotoBundle/Resources/config/routing.yml"
     prefix:   /

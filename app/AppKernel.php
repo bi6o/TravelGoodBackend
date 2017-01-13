@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Main\BackendBundle\MainBackendBundle(),
             new Main\CityBundle\MainCityBundle(),
             new Main\PhotoBundle\MainPhotoBundle(),
+            new Main\MapBundle\MainMapBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
