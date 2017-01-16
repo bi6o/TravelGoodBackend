@@ -23,6 +23,28 @@ class CustomerCity
     private $id;
 
     /**
+     * @var int
+     *
+     * @ORM\ManyToOne(targetEntity="\Main\BackendBundle\Entity\Customer", inversedBy="customerCities")
+     * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
+     */
+    private $customer;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_arrived", type="datetime")
+     */
+    private $dateArrived;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_departed", type="datetime")
+     */
+    private $dateDeparted;
+
+    /**
      * @ORM\OneToOne(targetEntity="Main\MapBundle\Entity\Point")
      * @ORM\JoinColumn(name="map_point_id", referencedColumnName="id")
      */

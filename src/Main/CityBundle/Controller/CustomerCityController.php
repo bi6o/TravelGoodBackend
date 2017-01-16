@@ -64,7 +64,7 @@ class CustomerCityController extends Controller
     {
         $deleteForm = $this->createDeleteForm($customerCity);
 
-        $customerCity->getPoint()->setCustomer($this->findCustomerOfCity($customerCity));
+        $customerCity->setCustomer($this->findCustomerOfCity($customerCity));
 
         return $this->render('customercity/show.html.twig', array(
             'customerCity' => $customerCity,
@@ -74,8 +74,8 @@ class CustomerCityController extends Controller
 
     private function findCustomerOfCity(CustomerCity $customerCity)
     {
-        if ($customerCity->getPoint() !== null && $customerCity->getPoint()->getCustomer() !== null) {
-            return $customer = $this->getDoctrine()->getRepository('MainBackendBundle:Customer')->find($customerCity->getPoint()->getCustomer()->getId());
+        if ($customerCity->getCustomer() !== null) {
+            return $customer = $this->getDoctrine()->getRepository('MainBackendBundle:Customer')->find($customerCity->getCustomer()->getId());
         }
 
         return null;

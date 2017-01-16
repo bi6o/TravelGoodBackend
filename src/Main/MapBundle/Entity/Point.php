@@ -3,7 +3,6 @@
 namespace Main\MapBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Main\BackendBundle\Entity\Customer;
 use Main\CityBundle\Entity\CustomerCity;
 use Main\CityBundle\Entity\AllCities;
 
@@ -20,32 +19,10 @@ class Point
     /**
      * @var int
      *
-     * @ORM\ManyToOne(targetEntity="\Main\BackendBundle\Entity\Customer", inversedBy="customerCities")
-     * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
-     */
-    private $customer;
-
-    /**
-     * @var int
-     *
      * @ORM\ManyToOne(targetEntity="\Main\CityBundle\Entity\AllCities")
      * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
      */
     private $city;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_arrived", type="datetime")
-     */
-    private $dateArrived;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_departed", type="datetime")
-     */
-    private $dateDeparted;
 
     /**
      * @var float
@@ -60,30 +37,6 @@ class Point
      * @ORM\Column(name="latitude", type="float")
      */
     private $latitude;
-
-    /**
-     * Set customer.
-     *
-     * @param Customer $customer
-     *
-     * @return CustomerCity
-     */
-    public function setCustomer(Customer $customer = null)
-    {
-        $this->customer = $customer;
-
-        return $this;
-    }
-
-    /**
-     * Get customer.
-     *
-     * @return \Main\BackendBundle\Entity\Customer
-     */
-    public function getCustomer()
-    {
-        return $this->customer;
-    }
 
     /**
      * Set city.
@@ -107,54 +60,6 @@ class Point
     public function getCity()
     {
         return $this->city;
-    }
-
-    /**
-     * Set dateArrived.
-     *
-     * @param \DateTime $dateArrived
-     *
-     * @return CustomerCity
-     */
-    public function setDateArrived($dateArrived)
-    {
-        $this->dateArrived = $dateArrived;
-
-        return $this;
-    }
-
-    /**
-     * Get dateArrived.
-     *
-     * @return \DateTime
-     */
-    public function getDateArrived()
-    {
-        return $this->dateArrived;
-    }
-
-    /**
-     * Set dateDeparted.
-     *
-     * @param \DateTime $dateDeparted
-     *
-     * @return CustomerCity
-     */
-    public function setDateDeparted($dateDeparted)
-    {
-        $this->dateDeparted = $dateDeparted;
-
-        return $this;
-    }
-
-    /**
-     * Get dateDeparted.
-     *
-     * @return \DateTime
-     */
-    public function getDateDeparted()
-    {
-        return $this->dateDeparted;
     }
 
     /**

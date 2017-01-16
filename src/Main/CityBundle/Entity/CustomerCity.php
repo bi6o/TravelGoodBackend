@@ -23,6 +23,28 @@ class CustomerCity
     private $id;
 
     /**
+     * @var int
+     *
+     * @ORM\ManyToOne(targetEntity="\Main\BackendBundle\Entity\Customer", inversedBy="customerCities")
+     * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
+     */
+    private $customer;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_arrived", type="datetime")
+     */
+    private $dateArrived;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_departed", type="datetime")
+     */
+    private $dateDeparted;
+
+    /**
      * @ORM\OneToOne(targetEntity="Main\MapBundle\Entity\Point")
      * @ORM\JoinColumn(name="map_point_id", referencedColumnName="id")
      */
@@ -184,5 +206,77 @@ class CustomerCity
     public function getPoint()
     {
         return $this->point;
+    }
+
+    /**
+     * Set dateArrived
+     *
+     * @param \DateTime $dateArrived
+     *
+     * @return CustomerCity
+     */
+    public function setDateArrived($dateArrived)
+    {
+        $this->dateArrived = $dateArrived;
+
+        return $this;
+    }
+
+    /**
+     * Get dateArrived
+     *
+     * @return \DateTime
+     */
+    public function getDateArrived()
+    {
+        return $this->dateArrived;
+    }
+
+    /**
+     * Set dateDeparted
+     *
+     * @param \DateTime $dateDeparted
+     *
+     * @return CustomerCity
+     */
+    public function setDateDeparted($dateDeparted)
+    {
+        $this->dateDeparted = $dateDeparted;
+
+        return $this;
+    }
+
+    /**
+     * Get dateDeparted
+     *
+     * @return \DateTime
+     */
+    public function getDateDeparted()
+    {
+        return $this->dateDeparted;
+    }
+
+    /**
+     * Set customer
+     *
+     * @param \Main\BackendBundle\Entity\Customer $customer
+     *
+     * @return CustomerCity
+     */
+    public function setCustomer(\Main\BackendBundle\Entity\Customer $customer = null)
+    {
+        $this->customer = $customer;
+
+        return $this;
+    }
+
+    /**
+     * Get customer
+     *
+     * @return \Main\BackendBundle\Entity\Customer
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
     }
 }
