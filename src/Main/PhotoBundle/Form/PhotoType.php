@@ -21,8 +21,8 @@ class PhotoType extends AbstractType
         ->add('photoUrl', TextType::class)
         ->add('photoType', ChoiceType::class, [
             'choices' => [
-                'profilePicture' => 'Profile Picture',
-                'cityPicture' => 'city Picutre',
+                'Profile Picture' => 'profilePicture',
+                'City Picture' => 'cityPicutre',
             ],
         ])
         ->add('dateUploaded', DateTimeType::class);

@@ -1,3 +1,7 @@
+main_trip:
+    resource: "@MainTripBundle/Resources/config/routing.yml"
+    prefix:   /
+
 main_map:
     resource: "@MainMapBundle/Resources/config/routing.yml"
     prefix:   /
