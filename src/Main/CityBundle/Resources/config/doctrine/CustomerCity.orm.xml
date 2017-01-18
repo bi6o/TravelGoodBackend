@@ -3,6 +3,7 @@
   <indexes>
     <index name="idx_79caa6439395c3f3" columns="customer_id"/>
     <index name="uniq_79caa643a2daf885" columns="map_point_id"/>
+    <index name="idx_79caa6438bac62af" columns="city_id"/>
   </indexes>
   <entity name="Main\CityBundle\Entity\CustomerCity" table="customer_city">
     <id name="id" type="integer" column="id">
@@ -11,11 +12,6 @@
     </id>
     <field name="dateArrived" type="datetime" column="date_arrived" nullable="true"/>
     <field name="dateDeparted" type="datetime" column="date_departed" nullable="true"/>
-    <many-to-one field="customer" target-entity="Main\BackendBundle\Entity\Customer" fetch="LAZY">
-      <join-columns>
-        <join-column name="customer_id" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <field name="cityBrief" type="text" column="city_brief" nullable="true">
       <options>
         <option name="fixed"/>
@@ -29,5 +25,15 @@
         <join-column name="map_point_id" referenced-column-name="id"/>
       </join-columns>
   </one-to-one>
+  <many-to-one field="city" target-entity="Main\CityBundle\Entity\AllCities" fetch="LAZY">
+    <join-columns>
+      <join-column name="city_id" referenced-column-name="id"/>
+    </join-columns>
+  </many-to-one>
+  <many-to-one field="customer" target-entity="Main\BackendBundle\Entity\Customer" fetch="LAZY">
+    <join-columns>
+      <join-column name="customer_id" referenced-column-name="id"/>
+    </join-columns>
+  </many-to-one>
   </entity>
 </doctrine-mapping>

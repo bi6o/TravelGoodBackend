@@ -4,7 +4,6 @@ namespace Main\MapBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Main\CityBundle\Entity\CustomerCity;
-use Main\CityBundle\Entity\AllCities;
 
 /**
  * Point.
@@ -15,14 +14,6 @@ class Point
      * @var int
      */
     private $id;
-
-    /**
-     * @var int
-     *
-     * @ORM\ManyToOne(targetEntity="\Main\CityBundle\Entity\AllCities")
-     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
-     */
-    private $city;
 
     /**
      * @var float
@@ -37,30 +28,6 @@ class Point
      * @ORM\Column(name="latitude", type="float")
      */
     private $latitude;
-
-    /**
-     * Set city.
-     *
-     * @param \Main\CityBundle\Entity\AllCities $city
-     *
-     * @return CustomerCity
-     */
-    public function setCity(AllCities $city = null)
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get city.
-     *
-     * @return \Main\CityBundle\Entity\AllCities
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
 
     /**
      * Set logitude.

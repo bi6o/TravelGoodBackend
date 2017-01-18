@@ -31,6 +31,14 @@ class CustomerCity
     private $customer;
 
     /**
+     * @var int
+     *
+     * @ORM\ManyToOne(targetEntity="\Main\CityBundle\Entity\AllCities")
+     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
+     */
+    private $city;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_arrived", type="datetime")
@@ -86,6 +94,54 @@ class CustomerCity
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set customer.
+     *
+     * @param \Main\BackendBundle\Entity\Customer $customer
+     *
+     * @return CustomerCity
+     */
+    public function setCustomer(\Main\BackendBundle\Entity\Customer $customer = null)
+    {
+        $this->customer = $customer;
+
+        return $this;
+    }
+
+    /**
+     * Get customer.
+     *
+     * @return \Main\BackendBundle\Entity\Customer
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+
+    /**
+     * Set city.
+     *
+     * @param \Main\CityBundle\Entity\AllCities $city
+     *
+     * @return CustomerCity
+     */
+    public function setCity(AllCities $city = null)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city.
+     *
+     * @return \Main\CityBundle\Entity\AllCities
+     */
+    public function getCity()
+    {
+        return $this->city;
     }
 
     /**
@@ -209,7 +265,7 @@ class CustomerCity
     }
 
     /**
-     * Set dateArrived
+     * Set dateArrived.
      *
      * @param \DateTime $dateArrived
      *
@@ -223,7 +279,7 @@ class CustomerCity
     }
 
     /**
-     * Get dateArrived
+     * Get dateArrived.
      *
      * @return \DateTime
      */
@@ -233,7 +289,7 @@ class CustomerCity
     }
 
     /**
-     * Set dateDeparted
+     * Set dateDeparted.
      *
      * @param \DateTime $dateDeparted
      *
@@ -247,36 +303,12 @@ class CustomerCity
     }
 
     /**
-     * Get dateDeparted
+     * Get dateDeparted.
      *
      * @return \DateTime
      */
     public function getDateDeparted()
     {
         return $this->dateDeparted;
-    }
-
-    /**
-     * Set customer
-     *
-     * @param \Main\BackendBundle\Entity\Customer $customer
-     *
-     * @return CustomerCity
-     */
-    public function setCustomer(\Main\BackendBundle\Entity\Customer $customer = null)
-    {
-        $this->customer = $customer;
-
-        return $this;
-    }
-
-    /**
-     * Get customer
-     *
-     * @return \Main\BackendBundle\Entity\Customer
-     */
-    public function getCustomer()
-    {
-        return $this->customer;
     }
 }
