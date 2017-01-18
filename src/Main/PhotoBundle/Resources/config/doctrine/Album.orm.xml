@@ -3,21 +3,27 @@
   <entity name="Main\PhotoBundle\Entity\Album" table="album">
     <indexes>
       <index name="idx_39986e439395c3f3" columns="customer_id"/>
+      <index name="idx_39986e43a7bc5df9" columns="main_photo_id"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
       <sequence-generator sequence-name="album_id_seq" allocation-size="1" initial-value="1"/>
     </id>
-    <field name="albumTitle" type="string" column="albumtitle" length="50" nullable="true">
+    <field name="albumTitle" type="string" column="album_title" length="50" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="dateCreated" type="datetime" column="datecreated" nullable="false"/>
+    <field name="dateCreated" type="datetime" column="date_created" nullable="false"/>
     <many-to-one field="customer" target-entity="Main\BackendBundle\Entity\Customer" fetch="LAZY">
       <join-columns>
         <join-column name="customer_id" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
+    <one-to-one field="mainPhoto" target-entity="Main\PhotoBundle\Entity\Photo" fetch="LAZY">
+      <join-columns>
+        <join-column name="main_photo_id" referenced-column-name="id"/>
+      </join-columns>
+    </one-to-one>
   </entity>
 </doctrine-mapping>

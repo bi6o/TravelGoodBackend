@@ -87,6 +87,17 @@ class CustomerCity
     private $livedCity;
 
     /**
+     * @ORM\OneToOne(targetEntity="Main\PhotoBundle\Entity\Album", nullable=true)
+     * @ORM\JoinColumn(name="album_id", referencedColumnName="id")
+     */
+    private $album;
+
+    public function __construct()
+    {
+        $this->albums = new ArrayCollection();
+    }
+
+    /**
      * Get id.
      *
      * @return int

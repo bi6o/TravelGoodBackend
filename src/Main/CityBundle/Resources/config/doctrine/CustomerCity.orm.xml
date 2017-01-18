@@ -4,6 +4,7 @@
     <index name="idx_79caa6439395c3f3" columns="customer_id"/>
     <index name="uniq_79caa643a2daf885" columns="map_point_id"/>
     <index name="idx_79caa6438bac62af" columns="city_id"/>
+    <index name="" columns="album_id"/>
   </indexes>
   <entity name="Main\CityBundle\Entity\CustomerCity" table="customer_city">
     <id name="id" type="integer" column="id">
@@ -30,6 +31,11 @@
       <join-column name="city_id" referenced-column-name="id"/>
     </join-columns>
   </many-to-one>
+  <one-to-one field="album" target-entity="Main\PhotoBundle\Entity\Album" fetch="LAZY" nullable="true">
+    <join-columns>
+      <join-column name="album_id" referenced-column-name="id"/>
+    </join-columns>
+  </one-to-one>
   <many-to-one field="customer" target-entity="Main\BackendBundle\Entity\Customer" fetch="LAZY">
     <join-columns>
       <join-column name="customer_id" referenced-column-name="id"/>

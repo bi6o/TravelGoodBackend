@@ -30,9 +30,9 @@
                             </a>
                         {% endif %}
                         <td>
-                            {% if customerCity.point is not null and customerCity.point.city %}{{ customerCity.point.city.city }}
+                            {% if customerCity.city %}{{ customerCity.city.city }}
                                 ,
-                                {{ customerCity.point.city.country }}{% endif %}
+                                {{ customerCity.city.country }}{% endif %}
                         </td>
 
                         <td>

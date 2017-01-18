@@ -16,7 +16,11 @@ class CustomerCityType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('point', PointType::class)
+        $builder->add('city', EntityType::class, [
+                        'class' => 'Main\CityBundle\Entity\AllCities',
+                        'choice_label' => 'city',
+                ])
+                ->add('point', PointType::class)
                 ->add('customer', EntityType::class, [
                     'class' => 'Main\BackendBundle\Entity\Customer',
                     'choice_label' => 'username',
