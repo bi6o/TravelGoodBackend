@@ -1,0 +1,28 @@
+<?php
+
+namespace Main\PhotoBundle\Entity;
+
+/**
+ * AlbumPhoto.
+ */
+class AlbumPhoto
+{
+    /**
+     * @var int
+     */
+    private $id;
+
+    private $album;
+
+    private $photo;
+
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}

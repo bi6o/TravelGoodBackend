@@ -4,6 +4,7 @@
     <indexes>
       <index name="idx_39986e439395c3f3" columns="customer_id"/>
       <index name="idx_39986e43a7bc5df9" columns="main_photo_id"/>
+      <index name="idx_14b78418932df3ds" columns="album_photo_id"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
@@ -23,6 +24,11 @@
     <one-to-one field="mainPhoto" target-entity="Main\PhotoBundle\Entity\Photo" fetch="LAZY">
       <join-columns>
         <join-column name="main_photo_id" referenced-column-name="id"/>
+      </join-columns>
+    </one-to-one>
+    <one-to-one field="albumPhoto" target-entity="Main\PhotoBundle\Entity\AlbumPhoto" fetch="LAZY">
+      <join-columns>
+        <join-column name="album_photo_id" referenced-column-name="id"/>
       </join-columns>
     </one-to-one>
   </entity>

@@ -55,9 +55,11 @@ class Album
     private $dateCreated;
 
     /**
-     * @ORM\OneToMany(targetEntity="Photo", mappedBy="album")
+     * @var int
+     *
+     * @ORM\OneToOne(targetEntity="AlbumPhoto")
      */
-    private $photos;
+    private $albumPhoto;
 
     public function __construct()
     {
@@ -220,36 +222,26 @@ class Album
     }
 
     /**
-     * Add photo.
+     * Set albumPhoto.
      *
-     * @param \Main\PhotoBundle\Entity\Photo $photo
+     * @param \Main\PhotoBundle\Entity\AlbumPhoto $albumPhoto
      *
      * @return Album
      */
-    public function addPhoto(Photo $photo)
+    public function setAlbumPhoto(\Main\PhotoBundle\Entity\AlbumPhoto $albumPhoto = null)
     {
-        $this->photos[] = $photo;
+        $this->albumPhoto = $albumPhoto;
 
         return $this;
     }
 
     /**
-     * Remove photo.
+     * Get albumPhoto.
      *
-     * @param \Main\PhotoBundle\Entity\Photo $photo
+     * @return \Main\PhotoBundle\Entity\AlbumPhoto
      */
-    public function removePhoto(Photo $photo)
+    public function getAlbumPhoto()
     {
-        $this->photos->removeElement($photo);
-    }
-
-    /**
-     * Get photos.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPhotos()
-    {
-        return $this->photos;
+        return $this->albumPhoto;
     }
 }

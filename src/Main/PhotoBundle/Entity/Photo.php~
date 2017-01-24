@@ -3,6 +3,7 @@
 namespace Main\PhotoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Main\BackendBundle\Entity\Customer;
 
 /**
  * Photo.
@@ -28,6 +29,7 @@ class Photo
      * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
      */
     private $customer;
+
     /**
      * @var string
      *
@@ -55,6 +57,8 @@ class Photo
      * @ORM\Column(name="photo_type", type="string", length=50)
      */
     private $photoType;
+
+    private $albumPhoto;
 
     /**
      * Get id.
@@ -160,5 +164,29 @@ class Photo
     public function getPhotoType()
     {
         return $this->photoType;
+    }
+
+    /**
+     * Set customer.
+     *
+     * @param \Main\BackendBundle\Entity\Customer $customer
+     *
+     * @return Photo
+     */
+    public function setCustomer(Customer $customer = null)
+    {
+        $this->customer = $customer;
+
+        return $this;
+    }
+
+    /**
+     * Get customer.
+     *
+     * @return \Main\BackendBundle\Entity\Customer
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
     }
 }

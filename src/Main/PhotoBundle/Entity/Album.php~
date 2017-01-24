@@ -5,6 +5,7 @@ namespace Main\PhotoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Main\BackendBundle\Entity\Customer;
 use Doctrine\Common\Collections\ArrayCollection;
+use Photo;
 
 /**
  * Album.
@@ -42,21 +43,18 @@ class Album
     /**
      * @var string
      *
-     * @ORM\Column(name="albumTitle", type="string", length=50, nullable=true)
+     * @ORM\Column(name="album_title", type="string", length=50, nullable=true)
      */
     private $albumTitle;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateCreated", type="datetime")
+     * @ORM\Column(name="date_created", type="datetime")
      */
     private $dateCreated;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Photo", mappedBy="album")
-     */
-    private $photos;
+    private $albumPhoto;
 
     public function __construct()
     {
@@ -192,5 +190,29 @@ class Album
         }
 
         return $this;
+    }
+
+    /**
+     * Set mainPhoto.
+     *
+     * @param \Main\PhotoBundle\Entity\Photo $mainPhoto
+     *
+     * @return Album
+     */
+    public function setMainPhoto(Photo $mainPhoto = null)
+    {
+        $this->mainPhoto = $mainPhoto;
+
+        return $this;
+    }
+
+    /**
+     * Get mainPhoto.
+     *
+     * @return \Main\PhotoBundle\Entity\Photo
+     */
+    public function getMainPhoto()
+    {
+        return $this->mainPhoto;
     }
 }
