@@ -89,7 +89,7 @@ class CustomerController extends Controller
         $this->getDoctrine()->getRepository('MainCityBundle:CustomerCity')->findAll();
 
         foreach ($cities as $city) {
-            if ($city->getPoint()->getCustomer() === $customer) {
+            if ($city->getCustomer() === $customer) {
                 $customerCities->add($city);
             }
         }

@@ -87,7 +87,7 @@ class CustomerCity
     private $livedCity;
 
     /**
-     * @ORM\OneToOne(targetEntity="Main\PhotoBundle\Entity\Album", nullable=true)
+     * @ORM\OneToOne(targetEntity="Main\PhotoBundle\Entity\Album")
      * @ORM\JoinColumn(name="album_id", referencedColumnName="id")
      */
     private $album;
