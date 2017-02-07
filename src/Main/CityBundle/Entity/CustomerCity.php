@@ -4,6 +4,7 @@ namespace Main\CityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Main\MapBundle\Entity\Point;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * CustomerCity.

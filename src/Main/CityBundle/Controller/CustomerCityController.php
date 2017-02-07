@@ -24,7 +24,7 @@ class CustomerCityController extends Controller
             $customer = $this->findCustomerOfCity($customerCity);
 
             if ($customer != null) {
-                $customerCity->getPoint()->setCustomer($customer);
+                $customerCity->setCustomer($customer);
             }
         }
 
