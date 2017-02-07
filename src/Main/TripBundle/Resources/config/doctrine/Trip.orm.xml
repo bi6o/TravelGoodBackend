@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="Main\TripBundle\Repository\TripRepository" name="Main\TripBundle\Entity\Trip">
+      <indexes>
+          <index name="idx_7656f53b9395c3f3" columns="customer_id"/>
+      </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="type" type="string" column="type" length="50"/>
+    <field name="date" type="datetime" column="date"/>
+    <field name="comment" type="string" column="comment" length="255" nullable="true"/>
+
+      <many-to-one field="customer" target-entity="Main\BackendBundle\Entity\Customer" fetch="LAZY">
+          <join-columns>
+              <join-column name="customer_id" referenced-column-name="id"/>
+          </join-columns>
+      </many-to-one>
+
+      <one-to-many field="tripCities" target-entity="Main\TripBundle\Entity\TripCity" mapped-by="trip" fetch="LAZY">
+
+      </one-to-many>
+
+  </entity>
+</doctrine-mapping>

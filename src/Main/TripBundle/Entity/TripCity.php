@@ -81,4 +81,33 @@ class TripCity
     {
         return $this->point;
     }
+    /**
+     * @var \Main\TripBundle\Entity\Trip
+     */
+    private $trip;
+
+
+    /**
+     * Set trip
+     *
+     * @param \Main\TripBundle\Entity\Trip $trip
+     *
+     * @return TripCity
+     */
+    public function setTrip(\Main\TripBundle\Entity\Trip $trip = null)
+    {
+        $this->trip = $trip;
+
+        return $this;
+    }
+
+    /**
+     * Get trip
+     *
+     * @return \Main\TripBundle\Entity\Trip
+     */
+    public function getTrip()
+    {
+        return $this->trip;
+    }
 }

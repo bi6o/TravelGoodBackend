@@ -2,6 +2,7 @@
 
 namespace Main\TripBundle\Entity;
 
+use Main\MapBundle\Entity\Point;
 /**
  * TripCity
  */
@@ -17,6 +18,10 @@ class TripCity
      */
     private $segment;
 
+	/**
+	 * @var \Main\MapBundle\Entity\Point
+	 */
+	private $point;
 
     /**
      * Get id
@@ -51,5 +56,29 @@ class TripCity
     {
         return $this->segment;
     }
-}
 
+
+    /**
+     * Set point
+     *
+     * @param \Main\MapBundle\Entity\Point $point
+     *
+     * @return TripCity
+     */
+    public function setPoint(Point $point = null)
+    {
+        $this->point = $point;
+
+        return $this;
+    }
+
+    /**
+     * Get point
+     *
+     * @return \Main\MapBundle\Entity\Point
+     */
+    public function getPoint()
+    {
+        return $this->point;
+    }
+}
