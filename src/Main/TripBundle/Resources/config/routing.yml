@@ -1,3 +1,11 @@
+main_trip_admin_trip:
+    resource: "@MainTripBundle/Resources/config/routing/trip.yml"
+    prefix:   /admin/trip
+
 main_trip_homepage:
     path:     /admin/trip
     defaults: { _controller: MainTripBundle:Default:index }
+
+main_trip_admin_trip_city:
+        resource: "@MainTripBundle/Resources/config/routing/tripcity.yml"
+        prefix:   /admin/trip_city

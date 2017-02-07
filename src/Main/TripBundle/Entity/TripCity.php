@@ -15,6 +15,10 @@ class TripCity
 
     /**
      * @var array
+	 *
+	 * Each segment represents the information from the current city of the trip to the next
+	 * If the Trip consists of ONE city, there should be no segment
+	 * Keys: Duration, Transportation, Comment
      */
     private $segment;
 
@@ -109,5 +113,34 @@ class TripCity
     public function getTrip()
     {
         return $this->trip;
+    }
+    /**
+     * @var string
+     */
+    private $cityName;
+
+
+    /**
+     * Set cityName
+     *
+     * @param string $cityName
+     *
+     * @return TripCity
+     */
+    public function setCityName($cityName)
+    {
+        $this->cityName = $cityName;
+
+        return $this;
+    }
+
+    /**
+     * Get cityName
+     *
+     * @return string
+     */
+    public function getCityName()
+    {
+        return $this->cityName;
     }
 }

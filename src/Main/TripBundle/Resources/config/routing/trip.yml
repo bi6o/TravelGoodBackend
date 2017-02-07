@@ -1,0 +1,24 @@
+admin_trip_index:
+    path:     /
+    defaults: { _controller: "MainTripBundle:Trip:index" }
+    methods:  GET
+
+admin_trip_show:
+    path:     /{id}/show
+    defaults: { _controller: "MainTripBundle:Trip:show" }
+    methods:  GET
+
+admin_trip_new:
+    path:     /new
+    defaults: { _controller: "MainTripBundle:Trip:new" }
+    methods:  [GET, POST]
+
+admin_trip_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainTripBundle:Trip:edit" }
+    methods:  [GET, POST]
+
+admin_trip_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MainTripBundle:Trip:delete" }
+    methods:  DELETE

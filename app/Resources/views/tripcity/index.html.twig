@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Tripcities list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Segment</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tripCity in tripCities %}
+            <tr>
+                <td><a href="{{ path('admin_trip_city_show', { 'id': tripCity.id }) }}">{{ tripCity.segment }}</a></td>
+                <td>{{ tripCity.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_trip_city_show', { 'id': tripCity.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_trip_city_edit', { 'id': tripCity.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_trip_city_new') }}">Create a new tripCity</a>
+        </li>
+    </ul>
+{% endblock %}

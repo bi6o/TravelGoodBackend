@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Trips list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Comment</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for trip in trips %}
+            <tr>
+                <td><a href="{{ path('admin_trip_show', { 'id': trip.id }) }}">{{ trip.type }}</a></td>
+                <td>{% if trip.date %}{{ trip.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ trip.comment }}</td>
+                <td>{{ trip.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_trip_show', { 'id': trip.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_trip_edit', { 'id': trip.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_trip_new') }}">Create a new trip</a>
+        </li>
+    </ul>
+{% endblock %}

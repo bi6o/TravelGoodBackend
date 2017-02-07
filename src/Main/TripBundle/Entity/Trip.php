@@ -2,6 +2,10 @@
 
 namespace Main\TripBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Main\BackendBundle\Entity\Customer;
+use Main\TripBundle\Entity\TripCity;
+
 /**
  * Trip
  */
@@ -27,6 +31,23 @@ class Trip
      */
     private $comment;
 
+	/**
+	 * @var \Doctrine\Common\Collections\Collection
+	 */
+	private $tripCities;
+
+	/**
+	 * @var \Main\BackendBundle\Entity\Customer
+	 */
+	private $customer;
+
+	/**
+	 * Constructor
+	 */
+	public function __construct()
+	{
+		$this->tripCities = new ArrayCollection();
+	}
 
     /**
      * Get id
@@ -109,23 +130,7 @@ class Trip
     {
         return $this->comment;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $tripCities;
 
-    /**
-     * @var \Main\BackendBundle\Entity\Customer
-     */
-    private $customer;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->tripCities = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Add tripCity
@@ -134,7 +139,7 @@ class Trip
      *
      * @return Trip
      */
-    public function addTripCity(\Main\TripBundle\Entity\TripCity $tripCity)
+    public function addTripCity(TripCity $tripCity)
     {
         $this->tripCities[] = $tripCity;
 
@@ -146,7 +151,7 @@ class Trip
      *
      * @param \Main\TripBundle\Entity\TripCity $tripCity
      */
-    public function removeTripCity(\Main\TripBundle\Entity\TripCity $tripCity)
+    public function removeTripCity(TripCity $tripCity)
     {
         $this->tripCities->removeElement($tripCity);
     }
@@ -168,7 +173,7 @@ class Trip
      *
      * @return Trip
      */
-    public function setCustomer(\Main\BackendBundle\Entity\Customer $customer = null)
+    public function setCustomer(Customer $customer = null)
     {
         $this->customer = $customer;
 
@@ -184,4 +189,12 @@ class Trip
     {
         return $this->customer;
     }
+
+	/**
+	 * TODO: once segment is fully configured, add durations here and return the result
+	 */
+	public function getDuration()
+	{
+
+	}
 }

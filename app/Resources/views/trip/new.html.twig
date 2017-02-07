@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Trip creation</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.type) }}
+    {{ form_row(form.date) }}
+    {{ form_row(form.comment) }}
+    {{ form_row(form.customer) }}
+
+
+    <ul class="tripCities" data-prototype="{{form_widget(form.tripCities.vars.prototype)|e('html_attr')}}">
+        {% for city in form.tripCities %}
+            <li>{{ form_row(city.cityName) }}</li>
+        {% endfor %}
+    </ul>
+
+
+    <ul>
+    <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+        <li>
+            <a href="{{ path('admin_trip_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

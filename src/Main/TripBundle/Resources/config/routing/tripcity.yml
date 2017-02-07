@@ -1,0 +1,24 @@
+admin_trip_city_index:
+    path:     /
+    defaults: { _controller: "MainTripBundle:TripCity:index" }
+    methods:  GET
+
+admin_trip_city_show:
+    path:     /{id}/show
+    defaults: { _controller: "MainTripBundle:TripCity:show" }
+    methods:  GET
+
+admin_trip_city_new:
+    path:     /new
+    defaults: { _controller: "MainTripBundle:TripCity:new" }
+    methods:  [GET, POST]
+
+admin_trip_city_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MainTripBundle:TripCity:edit" }
+    methods:  [GET, POST]
+
+admin_trip_city_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MainTripBundle:TripCity:delete" }
+    methods:  DELETE

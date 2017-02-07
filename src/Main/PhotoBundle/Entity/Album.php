@@ -5,7 +5,8 @@ namespace Main\PhotoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Main\BackendBundle\Entity\Customer;
 use Doctrine\Common\Collections\ArrayCollection;
-use Photo;
+use Main\PhotoBundle\Entity\Photo;
+use Main\PhotoBundle\Entity\AlbumPhoto;
 
 /**
  * Album.
@@ -228,7 +229,7 @@ class Album
      *
      * @return Album
      */
-    public function setAlbumPhoto(\Main\PhotoBundle\Entity\AlbumPhoto $albumPhoto = null)
+    public function setAlbumPhoto(AlbumPhoto $albumPhoto = null)
     {
         $this->albumPhoto = $albumPhoto;
 

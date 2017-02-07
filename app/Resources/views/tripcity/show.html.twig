@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Tripcity</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Segment</th>
+                <td>{{ tripCity.segment }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ tripCity.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_trip_city_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_trip_city_edit', { 'id': tripCity.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
