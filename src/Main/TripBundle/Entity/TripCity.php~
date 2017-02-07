@@ -1,0 +1,55 @@
+<?php
+
+namespace Main\TripBundle\Entity;
+
+/**
+ * TripCity
+ */
+class TripCity
+{
+    /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @var array
+     */
+    private $segment;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set segment
+     *
+     * @param array $segment
+     *
+     * @return TripCity
+     */
+    public function setSegment($segment)
+    {
+        $this->segment = $segment;
+
+        return $this;
+    }
+
+    /**
+     * Get segment
+     *
+     * @return array
+     */
+    public function getSegment()
+    {
+        return $this->segment;
+    }
+}
+
