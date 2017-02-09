@@ -29,8 +29,9 @@
                 {% if app.user %}
                     <div id="nav">
                         <a href="{{ path('main_backend_homepage') }}">Home</a>
-                        <a href="{{ path('admin_customer_index') }}">Manage customers</a>
-                        <a href="{{ path('admin_customer_city_index') }}">Manage added cities</a>
+                        <a href="{{ path('admin_customer_index') }}">Customers</a>
+                        <a href="{{ path('admin_customer_city_index') }}">Added cities</a>
+                        <a href="{{ path('admin_trip_index') }}">Trips</a>
                         <a href="{{ path('admin_user_index') }}">System users</a>
                         <a href="{{ path('logout') }}">Logout</a>
                     </div>

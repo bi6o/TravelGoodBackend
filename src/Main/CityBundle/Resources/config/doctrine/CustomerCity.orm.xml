@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <indexes>
-    <index name="idx_79caa6439395c3f3" columns="customer_id"/>
-    <index name="uniq_79caa643a2daf885" columns="map_point_id"/>
-    <index name="idx_79caa6438bac62af" columns="city_id"/>
-    <index name="" columns="album_id"/>
-  </indexes>
   <entity name="Main\CityBundle\Entity\CustomerCity" table="customer_city">
+      <indexes>
+          <index name="idx_79caa6439395c3f3" columns="customer_id"/>
+          <index name="idx_79caa643a2daf885" columns="map_point_id"/>
+          <index name="idx_79caa6438bac62af" columns="city_id"/>
+          <index name="idx_79caa64394efd3a9" columns="city_album_id"/>
+      </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="SEQUENCE"/>
       <sequence-generator sequence-name="customer_city_id_seq" allocation-size="1" initial-value="1"/>
@@ -21,7 +21,10 @@
     <field name="currentCity" type="boolean" column="current_city" nullable="false"/>
     <field name="visitedCity" type="boolean" column="visited_city" nullable="false"/>
     <field name="livedCity" type="boolean" column="lived_city" nullable="false"/>
-    <one-to-one field="point" target-entity="Main\MapBundle\Entity\Point" cascade="persist" fetch="LAZY">
+    <one-to-one field="point" target-entity="Main\MapBundle\Entity\Point" fetch="LAZY">
+        <cascade>
+            <cascade-persist/>
+        </cascade>
       <join-columns>
         <join-column name="map_point_id" referenced-column-name="id"/>
       </join-columns>
@@ -31,9 +34,9 @@
       <join-column name="city_id" referenced-column-name="id"/>
     </join-columns>
   </many-to-one>
-  <one-to-one field="album" target-entity="Main\PhotoBundle\Entity\Album" fetch="LAZY" nullable="true">
+  <one-to-one field="cityAlbum" target-entity="Main\PhotoBundle\Entity\Album" fetch="LAZY">
     <join-columns>
-      <join-column name="album_id" referenced-column-name="id"/>
+      <join-column name="city_album_id" referenced-column-name="id"/>
     </join-columns>
   </one-to-one>
   <many-to-one field="customer" target-entity="Main\BackendBundle\Entity\Customer" fetch="LAZY">

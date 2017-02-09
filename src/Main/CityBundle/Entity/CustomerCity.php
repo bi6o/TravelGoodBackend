@@ -87,11 +87,10 @@ class CustomerCity
      */
     private $livedCity;
 
-    /**
-     * @ORM\OneToOne(targetEntity="Main\PhotoBundle\Entity\Album")
-     * @ORM\JoinColumn(name="album_id", referencedColumnName="id")
-     */
-    private $album;
+	/**
+	 * @var \Main\PhotoBundle\Entity\Album
+	 */
+	private $cityAlbum;
 
     public function __construct()
     {
@@ -322,5 +321,30 @@ class CustomerCity
     public function getDateDeparted()
     {
         return $this->dateDeparted;
+    }
+
+
+    /**
+     * Set cityAlbum
+     *
+     * @param \Main\PhotoBundle\Entity\Album $cityAlbum
+     *
+     * @return CustomerCity
+     */
+    public function setCityAlbum(\Main\PhotoBundle\Entity\Album $cityAlbum = null)
+    {
+        $this->cityAlbum = $cityAlbum;
+
+        return $this;
+    }
+
+    /**
+     * Get cityAlbum
+     *
+     * @return \Main\PhotoBundle\Entity\Album
+     */
+    public function getCityAlbum()
+    {
+        return $this->cityAlbum;
     }
 }

@@ -19,8 +19,8 @@ class TripType extends AbstractType
     {
         $builder->add('type' , ChoiceType::class, [
 			'choices' => [
-				'Hitchhicked' => 'Hitchhicked',
 				'Roadtrip' => 'Roadtrip',
+				'Hitchhicked' => 'Hitchhicked',
 			],
 		])
 				->add('date' , DateTimeType::class)

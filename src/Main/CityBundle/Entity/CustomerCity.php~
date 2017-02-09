@@ -4,6 +4,7 @@ namespace Main\CityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Main\MapBundle\Entity\Point;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * CustomerCity.
@@ -29,6 +30,14 @@ class CustomerCity
      * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
      */
     private $customer;
+
+    /**
+     * @var int
+     *
+     * @ORM\ManyToOne(targetEntity="\Main\CityBundle\Entity\AllCities")
+     * @ORM\JoinColumn(name="city_id", referencedColumnName="id")
+     */
+    private $city;
 
     /**
      * @var \DateTime
@@ -78,6 +87,12 @@ class CustomerCity
      */
     private $livedCity;
 
+
+    public function __construct()
+    {
+        $this->albums = new ArrayCollection();
+    }
+
     /**
      * Get id.
      *
@@ -86,6 +101,54 @@ class CustomerCity
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set customer.
+     *
+     * @param \Main\BackendBundle\Entity\Customer $customer
+     *
+     * @return CustomerCity
+     */
+    public function setCustomer(\Main\BackendBundle\Entity\Customer $customer = null)
+    {
+        $this->customer = $customer;
+
+        return $this;
+    }
+
+    /**
+     * Get customer.
+     *
+     * @return \Main\BackendBundle\Entity\Customer
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+
+    /**
+     * Set city.
+     *
+     * @param \Main\CityBundle\Entity\AllCities $city
+     *
+     * @return CustomerCity
+     */
+    public function setCity(AllCities $city = null)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city.
+     *
+     * @return \Main\CityBundle\Entity\AllCities
+     */
+    public function getCity()
+    {
+        return $this->city;
     }
 
     /**
@@ -206,5 +269,53 @@ class CustomerCity
     public function getPoint()
     {
         return $this->point;
+    }
+
+    /**
+     * Set dateArrived.
+     *
+     * @param \DateTime $dateArrived
+     *
+     * @return CustomerCity
+     */
+    public function setDateArrived($dateArrived)
+    {
+        $this->dateArrived = $dateArrived;
+
+        return $this;
+    }
+
+    /**
+     * Get dateArrived.
+     *
+     * @return \DateTime
+     */
+    public function getDateArrived()
+    {
+        return $this->dateArrived;
+    }
+
+    /**
+     * Set dateDeparted.
+     *
+     * @param \DateTime $dateDeparted
+     *
+     * @return CustomerCity
+     */
+    public function setDateDeparted($dateDeparted)
+    {
+        $this->dateDeparted = $dateDeparted;
+
+        return $this;
+    }
+
+    /**
+     * Get dateDeparted.
+     *
+     * @return \DateTime
+     */
+    public function getDateDeparted()
+    {
+        return $this->dateDeparted;
     }
 }

@@ -3,6 +3,8 @@
 namespace Main\TripBundle\Entity;
 
 use Main\MapBundle\Entity\Point;
+use Main\CityBundle\Entity\AllCities;
+
 /**
  * TripCity
  */
@@ -22,12 +24,17 @@ class TripCity
      */
     private $segment;
 
-	/**
-	 * @var \Main\MapBundle\Entity\Point
-	 */
-	private $point;
 
-    /**
+	private $trip;
+
+
+	/**
+	 * @var \Main\CityBundle\Entity\CustomerCity
+	 */
+	private $city;
+
+
+	/**
      * Get id
      *
      * @return int
@@ -63,35 +70,6 @@ class TripCity
 
 
     /**
-     * Set point
-     *
-     * @param \Main\MapBundle\Entity\Point $point
-     *
-     * @return TripCity
-     */
-    public function setPoint(Point $point = null)
-    {
-        $this->point = $point;
-
-        return $this;
-    }
-
-    /**
-     * Get point
-     *
-     * @return \Main\MapBundle\Entity\Point
-     */
-    public function getPoint()
-    {
-        return $this->point;
-    }
-    /**
-     * @var \Main\TripBundle\Entity\Trip
-     */
-    private $trip;
-
-
-    /**
      * Set trip
      *
      * @param \Main\TripBundle\Entity\Trip $trip
@@ -114,33 +92,57 @@ class TripCity
     {
         return $this->trip;
     }
-    /**
-     * @var string
-     */
-    private $cityName;
-
 
     /**
-     * Set cityName
+     * Set city
      *
-     * @param string $cityName
+     * @param \Main\CityBundle\Entity\CustomerCity $city
      *
      * @return TripCity
      */
-    public function setCityName($cityName)
+    public function setCity(\Main\CityBundle\Entity\CustomerCity $city = null)
     {
-        $this->cityName = $cityName;
+        $this->city = $city;
 
         return $this;
     }
 
     /**
-     * Get cityName
+     * Get city
      *
-     * @return string
+     * @return \Main\CityBundle\Entity\CustomerCity
      */
-    public function getCityName()
+    public function getCity()
     {
-        return $this->cityName;
+        return $this->city;
+    }
+    /**
+     * @var \DateTime
+     */
+    private $dateCreated;
+
+
+    /**
+     * Set dateCreated
+     *
+     * @param \DateTime $dateCreated
+     *
+     * @return TripCity
+     */
+    public function setDateCreated($dateCreated)
+    {
+        $this->dateCreated = $dateCreated;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreated
+     *
+     * @return \DateTime
+     */
+    public function getDateCreated()
+    {
+        return $this->dateCreated;
     }
 }

@@ -5,7 +5,7 @@ namespace Main\TripBundle\Controller;
 use Main\TripBundle\Entity\Trip;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
+use DateTime;
 /**
  * Trip controller.
  *
@@ -39,9 +39,10 @@ class TripController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+			$trip->setDateCreated(new DateTime());
             $em->persist($trip);
+			$this->setTripAttributes($trip);
             $em->flush($trip);
-
             return $this->redirectToRoute('admin_trip_show', array('id' => $trip->getId()));
         }
 
@@ -51,6 +52,16 @@ class TripController extends Controller
         ));
     }
 
+
+	private function setTripAttributes($trip)
+	{
+		foreach ($trip->getTripCities() as $city)
+		{
+			$city->setTrip($trip);
+			$city->setDateCreated(new DateTime());
+			$city->getCity()->setCustomer($trip->getCustomer());
+		}
+	}
     /**
      * Finds and displays a trip entity.
      *
@@ -76,6 +87,8 @@ class TripController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+			$this->setTripAttributes($trip);
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('admin_trip_edit', array('id' => $trip->getId()));

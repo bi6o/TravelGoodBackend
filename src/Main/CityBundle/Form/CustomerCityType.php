@@ -21,10 +21,6 @@ class CustomerCityType extends AbstractType
                         'choice_label' => 'city',
                 ])
                 ->add('point', PointType::class)
-                ->add('customer', EntityType::class, [
-                    'class' => 'Main\BackendBundle\Entity\Customer',
-                    'choice_label' => 'username',
-                ])
                 ->add('cityBrief')
                 ->add('currentCity')
                 ->add('visitedCity')

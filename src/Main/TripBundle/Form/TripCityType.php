@@ -2,10 +2,12 @@
 
 namespace Main\TripBundle\Form;
 
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Main\MapBundle\Form\PointType;
+use Main\CityBundle\Form\CustomerCityType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class TripCityType extends AbstractType
 {
@@ -14,9 +16,13 @@ class TripCityType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('segment')
-				 ->add('point' , PointType::class)
-				 ->add('trip');
+        $builder->add('City', EntityType::class, [
+			'class' => 'Main\CityBundle\Entity\CustomerCity',
+			'choice_label' => 'city.city',
+		])
+				->add('Segment')
+				->add('City' , CustomerCityType::class)
+				->add('Order' , IntegerType::class);
     }
     
     /**

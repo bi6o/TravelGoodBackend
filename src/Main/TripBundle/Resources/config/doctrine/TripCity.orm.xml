@@ -3,7 +3,7 @@
   <entity repository-class="Main\TripBundle\Repository\TripCityRepository" name="Main\TripBundle\Entity\TripCity">
 
       <indexes>
-          <index name="idx_663915fc028cea2" columns="point_id"/>
+          <index name="idx_663915f9771c611" columns="customer_city_id"/>
           <index name="idx_663915fa5bc2e0e" columns="trip_id"/>
       </indexes>
 
@@ -11,18 +11,24 @@
       <generator strategy="AUTO"/>
     </id>
 
-    <field name="segment" type="json_array" column="segment" />
+    <field name="segment" type="json_array" column="segment" nullable="true" />
+      <field name="dateCreated" type="datetime" column="date_created" />
+      <field name="order" type="integer" column="order" />
+      <one-to-one field="city" target-entity="Main\CityBundle\Entity\CustomerCity" fetch="LAZY">
+          <cascade>
+              <cascade-persist/>
+          </cascade>
+          <join-columns>
+              <join-column name="customer_city_id" referenced-column-name="id"/>
+          </join-columns>
+      </one-to-one>
 
-    <field name="cityName" type="text" column="city_name" />
 
-    <one-to-one field="point" target-entity="Main\MapBundle\Entity\Point" fetch="LAZY">
+    <many-to-one field="trip" target-entity="Main\TripBundle\Entity\Trip" inversed-by="tripCities">
         <join-columns>
-          <join-column name="point_id" referenced-column-name="id"/>
+            <join-column name="trip_id" referenced-column-name="id"/>
         </join-columns>
-    </one-to-one>
-
-      <many-to-one target-entity="Main\TripBundle\Entity\Trip" field="trip" inversed-by="tripCities">
-      </many-to-one>
+    </many-to-one>
 
   </entity>
 </doctrine-mapping>

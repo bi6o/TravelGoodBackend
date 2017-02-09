@@ -9,7 +9,14 @@
     </id>
     <field name="type" type="string" column="type" length="50"/>
     <field name="date" type="datetime" column="date"/>
+    <field name="dateCreated" type="datetime" column="date_created"/>
     <field name="comment" type="string" column="comment" length="255" nullable="true"/>
+
+      <one-to-many field="tripCities" target-entity="Main\TripBundle\Entity\TripCity" mapped-by="trip" fetch="LAZY">
+          <cascade>
+              <cascade-persist/>
+          </cascade>
+      </one-to-many>
 
       <many-to-one field="customer" target-entity="Main\BackendBundle\Entity\Customer" fetch="LAZY">
           <join-columns>
@@ -17,9 +24,6 @@
           </join-columns>
       </many-to-one>
 
-      <one-to-many field="tripCities" target-entity="Main\TripBundle\Entity\TripCity" mapped-by="trip" fetch="LAZY">
-
-      </one-to-many>
 
   </entity>
 </doctrine-mapping>

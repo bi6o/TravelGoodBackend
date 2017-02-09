@@ -16,7 +16,7 @@
     <ul class="cities" data-prototype="{{form_widget(edit_form.customerCities.vars.prototype)|e('html_attr')}}">
 
         {% for city in edit_form.customerCities %}
-            <li>{{ form_row(city.cityName) }}</li>
+            <li>{{ form_row(city.city) }}</li>
         {% endfor %}
 
     </ul>

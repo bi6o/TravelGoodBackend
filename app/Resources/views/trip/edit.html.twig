@@ -4,8 +4,19 @@
     <h1>Trip edit</h1>
 
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+    {{ form_row(edit_form.type) }}
+    {{ form_row(edit_form.date) }}
+    {{ form_row(edit_form.comment) }}
+    {{ form_row(edit_form.customer) }}
+
+
+    <ul class="tripCities" data-prototype="{{form_widget(edit_form.tripCities.vars.prototype)|e('html_attr')}}">
+
+        {% for city in edit_form.tripCities %}
+            <li>{{ form_row(city) }}</li>
+        {% endfor %}
+    </ul>
+    <input type="submit" value="Edit" />
     {{ form_end(edit_form) }}
 
     <ul>

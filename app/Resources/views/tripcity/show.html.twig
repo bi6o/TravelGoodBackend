@@ -7,7 +7,7 @@
         <tbody>
             <tr>
                 <th>Segment</th>
-                <td>{{ tripCity.segment }}</td>
+                <td>{% for segmentValue in tripCity.segment %}{{ segmentValue }} {% endfor %}</td>
             </tr>
             <tr>
                 <th>Id</th>

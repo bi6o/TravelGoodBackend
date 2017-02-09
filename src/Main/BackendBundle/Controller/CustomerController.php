@@ -110,7 +110,17 @@ class CustomerController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($customer->getInfo());
+			$em->persist($customer->getInfo()->getProfilePicture());
+
+			foreach ($customer->getCustomerCities() as $city)
+			{
+				$em->persist($city);
+				$em->persist($city->getPoint());
+			}
+            $em->flush();
 
             return $this->redirectToRoute('admin_customer_edit', array('id' => $customer->getId()));
         }
