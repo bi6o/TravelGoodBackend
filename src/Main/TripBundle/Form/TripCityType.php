@@ -22,7 +22,7 @@ class TripCityType extends AbstractType
 		])
 				->add('Segment')
 				->add('City' , CustomerCityType::class)
-				->add('Order' , IntegerType::class);
+				->add('cityOrder' , IntegerType::class);
     }
     
     /**

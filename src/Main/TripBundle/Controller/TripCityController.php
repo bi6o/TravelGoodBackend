@@ -20,7 +20,7 @@ class TripCityController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $tripCities = $em->getRepository('MainTripBundle:TripCity')->findAll();
+        $tripCities = $em->getRepository('MainTripBundle:TripCity')->findAll()->orderBy('cityOrder' , 'ASC');
 
         return $this->render('tripcity/index.html.twig', array(
             'tripCities' => $tripCities,

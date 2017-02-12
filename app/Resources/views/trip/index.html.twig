@@ -9,7 +9,7 @@
                 <th>Id</th>
                 <th>Type</th>
                 <th>Trip date</th>
-                <th>Route taken</th>
+                <th>Route</th>
                 <th>Comment</th>
                 <th>Date created</th>
                 <th>Actions</th>
@@ -24,9 +24,9 @@
                 <td>{% if trip.tripCities %}
                         {% for tripCity in trip.tripCities %}
                             <a href={{ path('admin_customer_city_show' , {'id' : tripCity.city.id}) }}>
-                                {{ tripCity.city.city.city }}
+                                {{ tripCity.city.city.city }}{% if not loop.last %},{% endif %}
                             </a>
-                            {% if not loop.last %} , {% endif %}
+
                         {% endfor %}
                     {% endif %}
                 </td>

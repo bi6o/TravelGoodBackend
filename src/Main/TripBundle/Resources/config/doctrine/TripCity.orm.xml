@@ -13,7 +13,7 @@
 
     <field name="segment" type="json_array" column="segment" nullable="true" />
       <field name="dateCreated" type="datetime" column="date_created" />
-      <field name="order" type="integer" column="order" />
+      <field name="cityOrder" type="integer" column="city_order" />
       <one-to-one field="city" target-entity="Main\CityBundle\Entity\CustomerCity" fetch="LAZY">
           <cascade>
               <cascade-persist/>

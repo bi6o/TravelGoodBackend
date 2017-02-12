@@ -21,6 +21,15 @@
                 <th>Id</th>
                 <td>{{ trip.id }}</td>
             </tr>
+            <tr>
+                <th>Route</th>
+                <td>
+            {% for city in trip.tripCities %}
+                {{ city.city.city.city }}
+
+            {% endfor %}
+                </td>
+            </tr>
         </tbody>
     </table>
 

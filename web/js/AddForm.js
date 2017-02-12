@@ -1,13 +1,10 @@
-var $collectionHolder;
+var $addCityLink = createAddLink("add_city_link" , "city");
+var $addInfoLink = createAddLink("add_info_link" , "customer information");
+var $addTripCityLink = createAddLink("add_trip_city_link" , "a trip city");
 
-// setup an "add a tag" link
-var $addCityLink = $('<a href="#" class="add_city_link col-xs-6">Add a city</a>');
-var $addInfoLink = $('<a href="#" class="add_info_link col-xs-6">Add customer information</a>');
-var $addTripCityLink = $('<a href="#" class="add_trip_city_link col-xs-6">Add Trip City</a>');
-
-var $newLinkCityLi = $('<li></li>').append($addCityLink);
-var $newLinkInfoLi = $('<li></li>').append($addInfoLink);
-var $newLinkTripCityLi = $('<li></li>').append($addTripCityLink);
+var $newLinkCityLi = createNewLinkLi($addCityLink);
+var $newLinkInfoLi = createNewLinkLi($addInfoLink);
+var $newLinkTripCityLi = createNewLinkLi($addTripCityLink);
 
 jQuery(document).ready(function() {
 
@@ -15,47 +12,28 @@ jQuery(document).ready(function() {
     $collectionHolder2 = $('ul.info');
     $collectionHolder3 = $('ul.tripCities');
 
-    $collectionHolder.find('li').each(function() {
-        addCityFormDeleteLink($(this));
-    });
-
-    $collectionHolder2.find('li').each(function() {
-        addInfoFormDeleteLink($(this));
-    });
-
-    $collectionHolder3.find('li').each(function() {
-        addTripCityFormDeleteLink($(this));
-    });
-
-
-    $collectionHolder.append($newLinkCityLi);
-    $collectionHolder2.append($newLinkInfoLi);
-    $collectionHolder3.append($newLinkTripCityLi);
-
-    $collectionHolder.data('index', $collectionHolder.find(':input').length);
-    $collectionHolder2.data('index', $collectionHolder2.find(':input').length);
-    $collectionHolder3.data('index', $collectionHolder3.find(':input').length);
-
-
-    $addCityLink.on('click', function(e) {
-        e.preventDefault();
-
-        addCityForm($collectionHolder, $newLinkCityLi);
-    });
-    $addInfoLink.on('click', function(e) {
-        e.preventDefault();
-
-        addInfoForm($collectionHolder2, $newLinkInfoLi);
-    });
-    $addTripCityLink.on('click', function(e) {
-        e.preventDefault();
-
-        addTripCityForm($collectionHolder3, $newLinkTripCityLi);
-    });
+    prepareForm($collectionHolder, $newLinkCityLi);
+    prepareForm($collectionHolder2, $newLinkInfoLi);
+    prepareForm($collectionHolder3, $newLinkTripCityLi);
 
 });
 
-function addCityForm($collectionHolder, $newLinkLi) {
+
+var prepareForm = function (collectionHolder, newLi, addLink){
+    collectionHolder.find('li').each(function() {
+        addFormDeleteLink($(this));
+    });
+    collectionHolder.append(newLi);
+    collectionHolder.data('index', collectionHolder.find(':input').length);
+    $addLink.on('click', function(e) {
+        e.preventDefault();
+
+        addForm(collectionHolder, newLi);
+    });
+
+}
+
+function addForm($collectionHolder, $newLinkLi) {
     var prototype = $collectionHolder.data('prototype');
 
     var index = $collectionHolder.data('index');
@@ -67,44 +45,12 @@ function addCityForm($collectionHolder, $newLinkLi) {
     var $newFormLi = $('<li></li>').append(newForm);
     $newLinkLi.before($newFormLi);
 
-    addCityFormDeleteLink($newFormLi);
+    addFormDeleteLink($newFormLi);
 
 }
 
-function addInfoForm($collectionHolder, $newLinkLi) {
-    var prototype = $collectionHolder.data('prototype');
-
-    var index = $collectionHolder.data('index');
-
-    var newForm = prototype.replace(/__name__/g, index);
-
-    $collectionHolder.data('index', index + 1);
-
-    var $newFormLi = $('<li></li>').append(newForm);
-    $newLinkLi.before($newFormLi);
-
-    addInfoFormDeleteLink($newFormLi);
-
-}
-
-function addTripCityForm($collectionHolder, $newLinkLi) {
-    var prototype = $collectionHolder.data('prototype');
-
-    var index = $collectionHolder.data('index');
-
-    var newForm = prototype.replace(/__name__/g, index);
-
-    $collectionHolder.data('index', index + 1);
-
-    var $newFormLi = $('<li></li>').append(newForm);
-    $newLinkLi.before($newFormLi);
-
-    addTripCityFormDeleteLink($newFormLi);
-
-}
-
-function addInfoFormDeleteLink($tagFormLi) {
-    var $removeFormA = $('<a href="#">delete info</a>');
+function addFormDeleteLink($tagFormLi) {
+    var $removeFormA = $('<a href="#">Delete</a>');
     $tagFormLi.append($removeFormA);
 
     $removeFormA.on('click', function(e) {
@@ -116,28 +62,15 @@ function addInfoFormDeleteLink($tagFormLi) {
     });
 }
 
-function addCityFormDeleteLink($tagFormLi) {
-    var $removeFormA = $('<a href="#">delete this city</a>');
-    $tagFormLi.append($removeFormA);
+var createAddLink = function(entityClassName , entityName){
+    var addLink = $('<a href="#" class="' + entityClassName +'col-xs-6">Add a ' + entityName + '</a>');
 
-    $removeFormA.on('click', function(e) {
-        // prevent the link from creating a "#" on the URL
-        e.preventDefault();
+    return addLink;
 
-        // remove the li for the tag form
-        $tagFormLi.remove();
-    });
 }
 
-function addTripCityFormDeleteLink($tagFormLi) {
-    var $removeFormA = $('<a href="#">delete this city</a>');
-    $tagFormLi.append($removeFormA);
-
-    $removeFormA.on('click', function(e) {
-        // prevent the link from creating a "#" on the URL
-        e.preventDefault();
-
-        // remove the li for the tag form
-        $tagFormLi.remove();
-    });
+var createNewLinkLi = function(addLink) {
+    var newLinkLi = $('<li></li>').append(addLink);
+    return newLinkLi;
 }
+

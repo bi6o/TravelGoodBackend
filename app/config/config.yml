@@ -16,6 +16,8 @@ parameters:
 framework:
     #esi:             ~
     #translator:      { fallbacks: ["%locale%"] }
+    profiler:
+        collect: false
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"

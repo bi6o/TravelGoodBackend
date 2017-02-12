@@ -62,40 +62,12 @@ class CustomerController extends Controller
     {
         $deleteForm = $this->createDeleteForm($customer);
 
-        $customer = $this->initCollectionArrays($customer);
-
-        $customerCities = $this->findCities($customer);
-
-        $customer->setCustomerCities($customerCities);
-
         return $this->render('customer/show.html.twig', array(
             'customer' => $customer,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
-    public function initCollectionArrays(Customer $customer)
-    {
-        $customer->initCustomerCities();
-        $customer->initCustomerAlbums();
-
-        return $customer;
-    }
-
-    private function findCities(Customer $customer)
-    {
-        $customerCities = new ArrayCollection();
-        $cities =
-        $this->getDoctrine()->getRepository('MainCityBundle:CustomerCity')->findAll();
-
-        foreach ($cities as $city) {
-            if ($city->getCustomer() === $customer) {
-                $customerCities->add($city);
-            }
-        }
-
-        return $customerCities;
-    }
 
     /**
      * Displays a form to edit an existing customer entity.
@@ -104,7 +76,6 @@ class CustomerController extends Controller
     {
         $deleteForm = $this->createDeleteForm($customer);
 
-        $customer = $this->initCollectionArrays($customer);
 
         $editForm = $this->createForm('Main\BackendBundle\Form\CustomerType', $customer);
         $editForm->handleRequest($request);
@@ -112,14 +83,6 @@ class CustomerController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
 
 			$em = $this->getDoctrine()->getManager();
-			$em->persist($customer->getInfo());
-			$em->persist($customer->getInfo()->getProfilePicture());
-
-			foreach ($customer->getCustomerCities() as $city)
-			{
-				$em->persist($city);
-				$em->persist($city->getPoint());
-			}
             $em->flush();
 
             return $this->redirectToRoute('admin_customer_edit', array('id' => $customer->getId()));

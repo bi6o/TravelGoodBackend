@@ -13,6 +13,10 @@
     <field name="comment" type="string" column="comment" length="255" nullable="true"/>
 
       <one-to-many field="tripCities" target-entity="Main\TripBundle\Entity\TripCity" mapped-by="trip" fetch="LAZY">
+          <order-by>
+              <order-by-field name="cityOrder" direction="ASC" />
+          </order-by>
+
           <cascade>
               <cascade-persist/>
           </cascade>

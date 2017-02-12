@@ -33,6 +33,15 @@ class TripCity
 	 */
 	private $city;
 
+	/**
+	 * @var \DateTime
+	 */
+	private $dateCreated;
+
+	/**
+	 * @var integer
+	 */
+	private $cityOrder;
 
 	/**
      * Get id
@@ -116,10 +125,7 @@ class TripCity
     {
         return $this->city;
     }
-    /**
-     * @var \DateTime
-     */
-    private $dateCreated;
+
 
 
     /**
@@ -145,33 +151,30 @@ class TripCity
     {
         return $this->dateCreated;
     }
-    /**
-     * @var integer
-     */
-    private $order;
 
 
     /**
-     * Set order
+     * Set cityOrder
      *
-     * @param integer $order
+     * @param integer $cityOrder
      *
      * @return TripCity
      */
-    public function setOrder($order)
+    public function setCityOrder($cityOrder)
     {
-        $this->order = $order;
+        $this->cityOrder = $cityOrder;
 
         return $this;
     }
 
     /**
-     * Get order
+     * Get cityOrder
      *
      * @return integer
      */
-    public function getOrder()
+    public function getCityOrder()
     {
-        return $this->order;
+        return $this->cityOrder;
     }
+
 }

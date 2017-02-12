@@ -35,12 +35,16 @@
       </options>
     </field>
     <field name="lastLogin" type="datetime" column="last_login" nullable="true"/>
+
     <one-to-many field="customerCities" target-entity="Main\CityBundle\Entity\CustomerCity" mapped-by="customer" fetch="LAZY">
     </one-to-many>
+
     <one-to-many field="customerPhotos" target-entity="Main\PhotoBundle\Entity\Photo" mapped-by="customer" fetch="LAZY">
     </one-to-many>
+
     <one-to-many field="customerAlbums" target-entity="Main\PhotoBundle\Entity\Album" mapped-by="customer" fetch="LAZY">
     </one-to-many>
+
     <one-to-one field="info" target-entity="CustomerInfo" fetch="LAZY">
         <join-columns>
           <join-column name="info_id" referenced-column-name="id"/>
